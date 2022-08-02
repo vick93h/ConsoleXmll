@@ -13,7 +13,7 @@ namespace ConsoleXmll
     {
         static void Main(string[] args)
         {
-            int j =0;
+           
             List<RootFIELD_DATA> list = new List<RootFIELD_DATA>();
             list = (from e in XDocument.Load("C:\\Users\\Vittorio\\source\\repos\\ConsoleXmll\\ConsoleXmll\\prova.xml").Root.Elements("FIELD_DATA")
                     select new RootFIELD_DATA
@@ -28,8 +28,8 @@ namespace ConsoleXmll
                         PRGNUM = (string)e.Attribute("PRGNUM"),
                         LINDES = (string)e.Attribute("LINDES"),
                         SUBGROUP_DESCRIPTION = (string)e.Attribute("SUBGROUP_DESCRIPTION"),
-                        TRACED_OPERATION=(from f in e.Elements("TRACED_OPERATION")
-                                                 select new RootFIELD_DATATRACED_OPERATION
+                        PROCESSING_DATA_SECTION = (from f in e.Elements("TRACED_OPERATION")
+                                                 select new RootFIELD_DATAPROCESSING_DATA_SECTIONTRACED_OPERATION
                                                  { 
                                                         OPCODE = (string)f.Attribute("OPCODE"),
                                                         OPTYPE = (string)f.Attribute("OPTYPE"),
@@ -39,7 +39,7 @@ namespace ConsoleXmll
                                                         OPERATOR = (string)f.Attribute("OPERATOR"),
                                                         OPDATE = (string)f.Attribute("OPDATE"),
                                                         SINGLE_ITEM = (from o in f.Elements("SINGLE_ITEM")
-                                                         select new RootFIELD_DATATRACED_OPERATIONSINGLE_ITEM
+                                                         select new RootFIELD_DATAPROCESSING_DATA_SECTIONTRACED_OPERATIONSINGLE_ITEM
                                                          {
                                                             ITEM_ID = (string)o.Attribute("ITEM_ID"),
                                                             ITEM_DESC = (string)o.Attribute("ITEM_DESC"),
@@ -47,14 +47,14 @@ namespace ConsoleXmll
                                                             OPERATOR = (string)o.Attribute("OPERATOR"),
                                                             OPTOOL_ID = (string)o.Attribute("OPTOOL_ID"),
                                                             SINGLE_OP_RESULT = (from i in o.Elements("SINGLE_OP_RESULT")
-                                                                                select new RootFIELD_DATATRACED_OPERATIONSINGLE_ITEMSINGLE_OP_RESULT
+                                                                                select new RootFIELD_DATAPROCESSING_DATA_SECTIONTRACED_OPERATIONSINGLE_ITEMSINGLE_OP_RESULT
                                                                                 {
                                                                                     TRY_ID = (string)i.Attribute("TRY_ID"),
                                                                                     TRY_RESULT = (string)i.Attribute("TRY_RESULT"),
                                                                                     OPERATOR = (string)i.Attribute("OPERATOR"),
                                                                                     OPTOOL_ID = (string)i.Attribute("OPTOOL_ID"),
                                                                                     MEASUREMENT = (from h in i.Elements("MEASUREMENT")
-                                                                                                    select new RootFIELD_DATATRACED_OPERATIONSINGLE_ITEMSINGLE_OP_RESULTMEASUREMENT
+                                                                                                    select new RootFIELD_DATAPROCESSING_DATA_SECTIONTRACED_OPERATIONSINGLE_ITEMSINGLE_OP_RESULTMEASUREMENT
                                                                                                     {
                                                                                                         MEAS_DESCR = (string)h.Attribute("MEAS_DESCR"),
                                                                                                         MEASURE = (string)h.Attribute("MEASURE"),
@@ -70,12 +70,12 @@ namespace ConsoleXmll
 
                     }).ToList();
             XmlSerializer serializer = new XmlSerializer(list.GetType());
-            using (StreamWriter writer = new StreamWriter(@"C:\Users\Vittorio\Desktop\pippo.xml"))
+            using (StreamWriter writer = new StreamWriter(@"C:\Users\Vittorio\Desktop\pluto.xml"))
             {
                 serializer.Serialize(writer, list);
             }
             //foreach (var item in list)
-            //    Console.WriteLine(item.TRACED_OPERATION[0].SINGLE_ITEM[0].ITEM_ID);
+            //    Console.WriteLine(item.PROCESSING_DATA_SECTION[0].OPCODE);
             //Console.ReadLine();
 
             //var xml = new XElement("Root", from v in list

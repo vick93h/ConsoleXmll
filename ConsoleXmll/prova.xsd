@@ -6,52 +6,58 @@
         <xs:element name="FIELD_DATA">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="TRACED_OPERATION" minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="PROCESSING_DATA_SECTION" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="SINGLE_ITEM" minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="TRACED_OPERATION" minOccurs="0" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="SINGLE_OP_RESULT" minOccurs="0" maxOccurs="unbounded">
+                          <xs:element name="SINGLE_ITEM" minOccurs="0" maxOccurs="unbounded">
                             <xs:complexType>
                               <xs:sequence>
-                                <xs:element name="MEASUREMENT" nillable="true" minOccurs="0" maxOccurs="unbounded">
+                                <xs:element name="SINGLE_OP_RESULT" minOccurs="0" maxOccurs="unbounded">
                                   <xs:complexType>
-                                    <xs:simpleContent msdata:ColumnName="MEASUREMENT_Text" msdata:Ordinal="6">
-                                      <xs:extension base="xs:string">
-                                        <xs:attribute name="MEAS_DESCR" type="xs:string" />
-                                        <xs:attribute name="MEASURE" type="xs:string" />
-                                        <xs:attribute name="VALUE" type="xs:string" />
-                                        <xs:attribute name="UM" type="xs:string" />
-                                        <xs:attribute name="UPPER_TOLERANCE" type="xs:string" />
-                                        <xs:attribute name="LOWER_TOLERANCE" type="xs:string" />
-                                      </xs:extension>
-                                    </xs:simpleContent>
+                                    <xs:sequence>
+                                      <xs:element name="MEASUREMENT" nillable="true" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:simpleContent msdata:ColumnName="MEASUREMENT_Text" msdata:Ordinal="6">
+                                            <xs:extension base="xs:string">
+                                              <xs:attribute name="MEAS_DESCR" type="xs:string" />
+                                              <xs:attribute name="MEASURE" type="xs:string" />
+                                              <xs:attribute name="VALUE" type="xs:string" />
+                                              <xs:attribute name="UM" type="xs:string" />
+                                              <xs:attribute name="UPPER_TOLERANCE" type="xs:string" />
+                                              <xs:attribute name="LOWER_TOLERANCE" type="xs:string" />
+                                            </xs:extension>
+                                          </xs:simpleContent>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="TRY_ID" type="xs:string" />
+                                    <xs:attribute name="TRY_RESULT" type="xs:string" />
+                                    <xs:attribute name="OPERATOR" type="xs:string" />
+                                    <xs:attribute name="OPTOOL_ID" type="xs:string" />
                                   </xs:complexType>
                                 </xs:element>
                               </xs:sequence>
-                              <xs:attribute name="TRY_ID" type="xs:string" />
-                              <xs:attribute name="TRY_RESULT" type="xs:string" />
+                              <xs:attribute name="ITEM_ID" type="xs:string" />
+                              <xs:attribute name="ITEM_DESC" type="xs:string" />
+                              <xs:attribute name="ITEM_RESULT" type="xs:string" />
                               <xs:attribute name="OPERATOR" type="xs:string" />
                               <xs:attribute name="OPTOOL_ID" type="xs:string" />
                             </xs:complexType>
                           </xs:element>
                         </xs:sequence>
-                        <xs:attribute name="ITEM_ID" type="xs:string" />
-                        <xs:attribute name="ITEM_DESC" type="xs:string" />
-                        <xs:attribute name="ITEM_RESULT" type="xs:string" />
-                        <xs:attribute name="OPERATOR" type="xs:string" />
+                        <xs:attribute name="OPCODE" type="xs:string" />
+                        <xs:attribute name="OPTYPE" type="xs:string" />
+                        <xs:attribute name="OPCYCLE" type="xs:string" />
                         <xs:attribute name="OPTOOL_ID" type="xs:string" />
+                        <xs:attribute name="OP_RESULT" type="xs:string" />
+                        <xs:attribute name="OPERATOR" type="xs:string" />
+                        <xs:attribute name="OPDATE" type="xs:string" />
                       </xs:complexType>
                     </xs:element>
                   </xs:sequence>
-                  <xs:attribute name="OPCODE" type="xs:string" />
-                  <xs:attribute name="OPTYPE" type="xs:string" />
-                  <xs:attribute name="OPCYCLE" type="xs:string" />
-                  <xs:attribute name="OPTOOL_ID" type="xs:string" />
-                  <xs:attribute name="OP_RESULT" type="xs:string" />
-                  <xs:attribute name="OPERATOR" type="xs:string" />
-                  <xs:attribute name="OPDATE" type="xs:string" />
                 </xs:complexType>
               </xs:element>
             </xs:sequence>

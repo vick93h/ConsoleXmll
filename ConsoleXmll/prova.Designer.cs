@@ -26,6 +26,8 @@ namespace ConsoleXmll {
         
         private FIELD_DATADataTable tableFIELD_DATA;
         
+        private PROCESSING_DATA_SECTIONDataTable tablePROCESSING_DATA_SECTION;
+        
         private TRACED_OPERATIONDataTable tableTRACED_OPERATION;
         
         private SINGLE_ITEMDataTable tableSINGLE_ITEM;
@@ -34,7 +36,9 @@ namespace ConsoleXmll {
         
         private MEASUREMENTDataTable tableMEASUREMENT;
         
-        private global::System.Data.DataRelation relationFIELD_DATA_TRACED_OPERATION;
+        private global::System.Data.DataRelation relationFIELD_DATA_PROCESSING_DATA_SECTION;
+        
+        private global::System.Data.DataRelation relationPROCESSING_DATA_SECTION_TRACED_OPERATION;
         
         private global::System.Data.DataRelation relationTRACED_OPERATION_SINGLE_ITEM;
         
@@ -73,6 +77,9 @@ namespace ConsoleXmll {
                 if ((ds.Tables["FIELD_DATA"] != null)) {
                     base.Tables.Add(new FIELD_DATADataTable(ds.Tables["FIELD_DATA"]));
                 }
+                if ((ds.Tables["PROCESSING_DATA_SECTION"] != null)) {
+                    base.Tables.Add(new PROCESSING_DATA_SECTIONDataTable(ds.Tables["PROCESSING_DATA_SECTION"]));
+                }
                 if ((ds.Tables["TRACED_OPERATION"] != null)) {
                     base.Tables.Add(new TRACED_OPERATIONDataTable(ds.Tables["TRACED_OPERATION"]));
                 }
@@ -110,6 +117,16 @@ namespace ConsoleXmll {
         public FIELD_DATADataTable FIELD_DATA {
             get {
                 return this.tableFIELD_DATA;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public PROCESSING_DATA_SECTIONDataTable PROCESSING_DATA_SECTION {
+            get {
+                return this.tablePROCESSING_DATA_SECTION;
             }
         }
         
@@ -223,6 +240,9 @@ namespace ConsoleXmll {
                 if ((ds.Tables["FIELD_DATA"] != null)) {
                     base.Tables.Add(new FIELD_DATADataTable(ds.Tables["FIELD_DATA"]));
                 }
+                if ((ds.Tables["PROCESSING_DATA_SECTION"] != null)) {
+                    base.Tables.Add(new PROCESSING_DATA_SECTIONDataTable(ds.Tables["PROCESSING_DATA_SECTION"]));
+                }
                 if ((ds.Tables["TRACED_OPERATION"] != null)) {
                     base.Tables.Add(new TRACED_OPERATIONDataTable(ds.Tables["TRACED_OPERATION"]));
                 }
@@ -274,6 +294,12 @@ namespace ConsoleXmll {
                     this.tableFIELD_DATA.InitVars();
                 }
             }
+            this.tablePROCESSING_DATA_SECTION = ((PROCESSING_DATA_SECTIONDataTable)(base.Tables["PROCESSING_DATA_SECTION"]));
+            if ((initTable == true)) {
+                if ((this.tablePROCESSING_DATA_SECTION != null)) {
+                    this.tablePROCESSING_DATA_SECTION.InitVars();
+                }
+            }
             this.tableTRACED_OPERATION = ((TRACED_OPERATIONDataTable)(base.Tables["TRACED_OPERATION"]));
             if ((initTable == true)) {
                 if ((this.tableTRACED_OPERATION != null)) {
@@ -298,7 +324,8 @@ namespace ConsoleXmll {
                     this.tableMEASUREMENT.InitVars();
                 }
             }
-            this.relationFIELD_DATA_TRACED_OPERATION = this.Relations["FIELD_DATA_TRACED_OPERATION"];
+            this.relationFIELD_DATA_PROCESSING_DATA_SECTION = this.Relations["FIELD_DATA_PROCESSING_DATA_SECTION"];
+            this.relationPROCESSING_DATA_SECTION_TRACED_OPERATION = this.Relations["PROCESSING_DATA_SECTION_TRACED_OPERATION"];
             this.relationTRACED_OPERATION_SINGLE_ITEM = this.Relations["TRACED_OPERATION_SINGLE_ITEM"];
             this.relationSINGLE_ITEM_SINGLE_OP_RESULT = this.Relations["SINGLE_ITEM_SINGLE_OP_RESULT"];
             this.relationSINGLE_OP_RESULT_MEASUREMENT = this.Relations["SINGLE_OP_RESULT_MEASUREMENT"];
@@ -314,6 +341,8 @@ namespace ConsoleXmll {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableFIELD_DATA = new FIELD_DATADataTable();
             base.Tables.Add(this.tableFIELD_DATA);
+            this.tablePROCESSING_DATA_SECTION = new PROCESSING_DATA_SECTIONDataTable();
+            base.Tables.Add(this.tablePROCESSING_DATA_SECTION);
             this.tableTRACED_OPERATION = new TRACED_OPERATIONDataTable();
             base.Tables.Add(this.tableTRACED_OPERATION);
             this.tableSINGLE_ITEM = new SINGLE_ITEMDataTable();
@@ -323,9 +352,16 @@ namespace ConsoleXmll {
             this.tableMEASUREMENT = new MEASUREMENTDataTable();
             base.Tables.Add(this.tableMEASUREMENT);
             global::System.Data.ForeignKeyConstraint fkc;
-            fkc = new global::System.Data.ForeignKeyConstraint("FIELD_DATA_TRACED_OPERATION", new global::System.Data.DataColumn[] {
+            fkc = new global::System.Data.ForeignKeyConstraint("FIELD_DATA_PROCESSING_DATA_SECTION", new global::System.Data.DataColumn[] {
                         this.tableFIELD_DATA.FIELD_DATA_IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableTRACED_OPERATION.FIELD_DATA_IdColumn});
+                        this.tablePROCESSING_DATA_SECTION.FIELD_DATA_IdColumn});
+            this.tablePROCESSING_DATA_SECTION.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("PROCESSING_DATA_SECTION_TRACED_OPERATION", new global::System.Data.DataColumn[] {
+                        this.tablePROCESSING_DATA_SECTION.PROCESSING_DATA_SECTION_IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableTRACED_OPERATION.PROCESSING_DATA_SECTION_IdColumn});
             this.tableTRACED_OPERATION.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
@@ -351,11 +387,16 @@ namespace ConsoleXmll {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            this.relationFIELD_DATA_TRACED_OPERATION = new global::System.Data.DataRelation("FIELD_DATA_TRACED_OPERATION", new global::System.Data.DataColumn[] {
+            this.relationFIELD_DATA_PROCESSING_DATA_SECTION = new global::System.Data.DataRelation("FIELD_DATA_PROCESSING_DATA_SECTION", new global::System.Data.DataColumn[] {
                         this.tableFIELD_DATA.FIELD_DATA_IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableTRACED_OPERATION.FIELD_DATA_IdColumn}, false);
-            this.relationFIELD_DATA_TRACED_OPERATION.Nested = true;
-            this.Relations.Add(this.relationFIELD_DATA_TRACED_OPERATION);
+                        this.tablePROCESSING_DATA_SECTION.FIELD_DATA_IdColumn}, false);
+            this.relationFIELD_DATA_PROCESSING_DATA_SECTION.Nested = true;
+            this.Relations.Add(this.relationFIELD_DATA_PROCESSING_DATA_SECTION);
+            this.relationPROCESSING_DATA_SECTION_TRACED_OPERATION = new global::System.Data.DataRelation("PROCESSING_DATA_SECTION_TRACED_OPERATION", new global::System.Data.DataColumn[] {
+                        this.tablePROCESSING_DATA_SECTION.PROCESSING_DATA_SECTION_IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableTRACED_OPERATION.PROCESSING_DATA_SECTION_IdColumn}, false);
+            this.relationPROCESSING_DATA_SECTION_TRACED_OPERATION.Nested = true;
+            this.Relations.Add(this.relationPROCESSING_DATA_SECTION_TRACED_OPERATION);
             this.relationTRACED_OPERATION_SINGLE_ITEM = new global::System.Data.DataRelation("TRACED_OPERATION_SINGLE_ITEM", new global::System.Data.DataColumn[] {
                         this.tableTRACED_OPERATION.TRACED_OPERATION_IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableSINGLE_ITEM.TRACED_OPERATION_IdColumn}, false);
@@ -376,6 +417,12 @@ namespace ConsoleXmll {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializeFIELD_DATA() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializePROCESSING_DATA_SECTION() {
             return false;
         }
         
@@ -460,6 +507,9 @@ namespace ConsoleXmll {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void FIELD_DATARowChangeEventHandler(object sender, FIELD_DATARowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void PROCESSING_DATA_SECTIONRowChangeEventHandler(object sender, PROCESSING_DATA_SECTIONRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void TRACED_OPERATIONRowChangeEventHandler(object sender, TRACED_OPERATIONRowChangeEvent e);
@@ -880,6 +930,275 @@ namespace ConsoleXmll {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class PROCESSING_DATA_SECTIONDataTable : global::System.Data.TypedTableBase<PROCESSING_DATA_SECTIONRow> {
+            
+            private global::System.Data.DataColumn columnPROCESSING_DATA_SECTION_Id;
+            
+            private global::System.Data.DataColumn columnFIELD_DATA_Id;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public PROCESSING_DATA_SECTIONDataTable() {
+                this.TableName = "PROCESSING_DATA_SECTION";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal PROCESSING_DATA_SECTIONDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected PROCESSING_DATA_SECTIONDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PROCESSING_DATA_SECTION_IdColumn {
+                get {
+                    return this.columnPROCESSING_DATA_SECTION_Id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn FIELD_DATA_IdColumn {
+                get {
+                    return this.columnFIELD_DATA_Id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public PROCESSING_DATA_SECTIONRow this[int index] {
+                get {
+                    return ((PROCESSING_DATA_SECTIONRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event PROCESSING_DATA_SECTIONRowChangeEventHandler PROCESSING_DATA_SECTIONRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event PROCESSING_DATA_SECTIONRowChangeEventHandler PROCESSING_DATA_SECTIONRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event PROCESSING_DATA_SECTIONRowChangeEventHandler PROCESSING_DATA_SECTIONRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event PROCESSING_DATA_SECTIONRowChangeEventHandler PROCESSING_DATA_SECTIONRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddPROCESSING_DATA_SECTIONRow(PROCESSING_DATA_SECTIONRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public PROCESSING_DATA_SECTIONRow AddPROCESSING_DATA_SECTIONRow(FIELD_DATARow parentFIELD_DATARowByFIELD_DATA_PROCESSING_DATA_SECTION) {
+                PROCESSING_DATA_SECTIONRow rowPROCESSING_DATA_SECTIONRow = ((PROCESSING_DATA_SECTIONRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        null};
+                if ((parentFIELD_DATARowByFIELD_DATA_PROCESSING_DATA_SECTION != null)) {
+                    columnValuesArray[1] = parentFIELD_DATARowByFIELD_DATA_PROCESSING_DATA_SECTION[10];
+                }
+                rowPROCESSING_DATA_SECTIONRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowPROCESSING_DATA_SECTIONRow);
+                return rowPROCESSING_DATA_SECTIONRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                PROCESSING_DATA_SECTIONDataTable cln = ((PROCESSING_DATA_SECTIONDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new PROCESSING_DATA_SECTIONDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnPROCESSING_DATA_SECTION_Id = base.Columns["PROCESSING_DATA_SECTION_Id"];
+                this.columnFIELD_DATA_Id = base.Columns["FIELD_DATA_Id"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnPROCESSING_DATA_SECTION_Id = new global::System.Data.DataColumn("PROCESSING_DATA_SECTION_Id", typeof(int), null, global::System.Data.MappingType.Hidden);
+                base.Columns.Add(this.columnPROCESSING_DATA_SECTION_Id);
+                this.columnFIELD_DATA_Id = new global::System.Data.DataColumn("FIELD_DATA_Id", typeof(int), null, global::System.Data.MappingType.Hidden);
+                base.Columns.Add(this.columnFIELD_DATA_Id);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnPROCESSING_DATA_SECTION_Id}, true));
+                this.columnPROCESSING_DATA_SECTION_Id.AutoIncrement = true;
+                this.columnPROCESSING_DATA_SECTION_Id.AllowDBNull = false;
+                this.columnPROCESSING_DATA_SECTION_Id.Unique = true;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public PROCESSING_DATA_SECTIONRow NewPROCESSING_DATA_SECTIONRow() {
+                return ((PROCESSING_DATA_SECTIONRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new PROCESSING_DATA_SECTIONRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(PROCESSING_DATA_SECTIONRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.PROCESSING_DATA_SECTIONRowChanged != null)) {
+                    this.PROCESSING_DATA_SECTIONRowChanged(this, new PROCESSING_DATA_SECTIONRowChangeEvent(((PROCESSING_DATA_SECTIONRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.PROCESSING_DATA_SECTIONRowChanging != null)) {
+                    this.PROCESSING_DATA_SECTIONRowChanging(this, new PROCESSING_DATA_SECTIONRowChangeEvent(((PROCESSING_DATA_SECTIONRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.PROCESSING_DATA_SECTIONRowDeleted != null)) {
+                    this.PROCESSING_DATA_SECTIONRowDeleted(this, new PROCESSING_DATA_SECTIONRowChangeEvent(((PROCESSING_DATA_SECTIONRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.PROCESSING_DATA_SECTIONRowDeleting != null)) {
+                    this.PROCESSING_DATA_SECTIONRowDeleting(this, new PROCESSING_DATA_SECTIONRowChangeEvent(((PROCESSING_DATA_SECTIONRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemovePROCESSING_DATA_SECTIONRow(PROCESSING_DATA_SECTIONRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                Root ds = new Root();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "PROCESSING_DATA_SECTIONDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class TRACED_OPERATIONDataTable : global::System.Data.TypedTableBase<TRACED_OPERATIONRow> {
             
             private global::System.Data.DataColumn columnOPCODE;
@@ -898,7 +1217,7 @@ namespace ConsoleXmll {
             
             private global::System.Data.DataColumn columnTRACED_OPERATION_Id;
             
-            private global::System.Data.DataColumn columnFIELD_DATA_Id;
+            private global::System.Data.DataColumn columnPROCESSING_DATA_SECTION_Id;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -999,9 +1318,9 @@ namespace ConsoleXmll {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn FIELD_DATA_IdColumn {
+            public global::System.Data.DataColumn PROCESSING_DATA_SECTION_IdColumn {
                 get {
-                    return this.columnFIELD_DATA_Id;
+                    return this.columnPROCESSING_DATA_SECTION_Id;
                 }
             }
             
@@ -1042,7 +1361,7 @@ namespace ConsoleXmll {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TRACED_OPERATIONRow AddTRACED_OPERATIONRow(string OPCODE, string OPTYPE, string OPCYCLE, string OPTOOL_ID, string OP_RESULT, string OPERATOR, string OPDATE, FIELD_DATARow parentFIELD_DATARowByFIELD_DATA_TRACED_OPERATION) {
+            public TRACED_OPERATIONRow AddTRACED_OPERATIONRow(string OPCODE, string OPTYPE, string OPCYCLE, string OPTOOL_ID, string OP_RESULT, string OPERATOR, string OPDATE, PROCESSING_DATA_SECTIONRow parentPROCESSING_DATA_SECTIONRowByPROCESSING_DATA_SECTION_TRACED_OPERATION) {
                 TRACED_OPERATIONRow rowTRACED_OPERATIONRow = ((TRACED_OPERATIONRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         OPCODE,
@@ -1054,8 +1373,8 @@ namespace ConsoleXmll {
                         OPDATE,
                         null,
                         null};
-                if ((parentFIELD_DATARowByFIELD_DATA_TRACED_OPERATION != null)) {
-                    columnValuesArray[8] = parentFIELD_DATARowByFIELD_DATA_TRACED_OPERATION[10];
+                if ((parentPROCESSING_DATA_SECTIONRowByPROCESSING_DATA_SECTION_TRACED_OPERATION != null)) {
+                    columnValuesArray[8] = parentPROCESSING_DATA_SECTIONRowByPROCESSING_DATA_SECTION_TRACED_OPERATION[0];
                 }
                 rowTRACED_OPERATIONRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTRACED_OPERATIONRow);
@@ -1087,7 +1406,7 @@ namespace ConsoleXmll {
                 this.columnOPERATOR = base.Columns["OPERATOR"];
                 this.columnOPDATE = base.Columns["OPDATE"];
                 this.columnTRACED_OPERATION_Id = base.Columns["TRACED_OPERATION_Id"];
-                this.columnFIELD_DATA_Id = base.Columns["FIELD_DATA_Id"];
+                this.columnPROCESSING_DATA_SECTION_Id = base.Columns["PROCESSING_DATA_SECTION_Id"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1109,8 +1428,8 @@ namespace ConsoleXmll {
                 base.Columns.Add(this.columnOPDATE);
                 this.columnTRACED_OPERATION_Id = new global::System.Data.DataColumn("TRACED_OPERATION_Id", typeof(int), null, global::System.Data.MappingType.Hidden);
                 base.Columns.Add(this.columnTRACED_OPERATION_Id);
-                this.columnFIELD_DATA_Id = new global::System.Data.DataColumn("FIELD_DATA_Id", typeof(int), null, global::System.Data.MappingType.Hidden);
-                base.Columns.Add(this.columnFIELD_DATA_Id);
+                this.columnPROCESSING_DATA_SECTION_Id = new global::System.Data.DataColumn("PROCESSING_DATA_SECTION_Id", typeof(int), null, global::System.Data.MappingType.Hidden);
+                base.Columns.Add(this.columnPROCESSING_DATA_SECTION_Id);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnTRACED_OPERATION_Id}, true));
                 this.columnOPCODE.Namespace = "";
@@ -2584,12 +2903,89 @@ namespace ConsoleXmll {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public PROCESSING_DATA_SECTIONRow[] GetPROCESSING_DATA_SECTIONRows() {
+                if ((this.Table.ChildRelations["FIELD_DATA_PROCESSING_DATA_SECTION"] == null)) {
+                    return new PROCESSING_DATA_SECTIONRow[0];
+                }
+                else {
+                    return ((PROCESSING_DATA_SECTIONRow[])(base.GetChildRows(this.Table.ChildRelations["FIELD_DATA_PROCESSING_DATA_SECTION"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class PROCESSING_DATA_SECTIONRow : global::System.Data.DataRow {
+            
+            private PROCESSING_DATA_SECTIONDataTable tablePROCESSING_DATA_SECTION;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal PROCESSING_DATA_SECTIONRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablePROCESSING_DATA_SECTION = ((PROCESSING_DATA_SECTIONDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int PROCESSING_DATA_SECTION_Id {
+                get {
+                    return ((int)(this[this.tablePROCESSING_DATA_SECTION.PROCESSING_DATA_SECTION_IdColumn]));
+                }
+                set {
+                    this[this.tablePROCESSING_DATA_SECTION.PROCESSING_DATA_SECTION_IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int FIELD_DATA_Id {
+                get {
+                    try {
+                        return ((int)(this[this.tablePROCESSING_DATA_SECTION.FIELD_DATA_IdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Il valore della colonna \'FIELD_DATA_Id\' nella tabella \'PROCESSING_DATA_SECTION\' è" +
+                                " DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePROCESSING_DATA_SECTION.FIELD_DATA_IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public FIELD_DATARow FIELD_DATARow {
+                get {
+                    return ((FIELD_DATARow)(this.GetParentRow(this.Table.ParentRelations["FIELD_DATA_PROCESSING_DATA_SECTION"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FIELD_DATA_PROCESSING_DATA_SECTION"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsFIELD_DATA_IdNull() {
+                return this.IsNull(this.tablePROCESSING_DATA_SECTION.FIELD_DATA_IdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetFIELD_DATA_IdNull() {
+                this[this.tablePROCESSING_DATA_SECTION.FIELD_DATA_IdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public TRACED_OPERATIONRow[] GetTRACED_OPERATIONRows() {
-                if ((this.Table.ChildRelations["FIELD_DATA_TRACED_OPERATION"] == null)) {
+                if ((this.Table.ChildRelations["PROCESSING_DATA_SECTION_TRACED_OPERATION"] == null)) {
                     return new TRACED_OPERATIONRow[0];
                 }
                 else {
-                    return ((TRACED_OPERATIONRow[])(base.GetChildRows(this.Table.ChildRelations["FIELD_DATA_TRACED_OPERATION"])));
+                    return ((TRACED_OPERATIONRow[])(base.GetChildRows(this.Table.ChildRelations["PROCESSING_DATA_SECTION_TRACED_OPERATION"])));
                 }
             }
         }
@@ -2733,29 +3129,29 @@ namespace ConsoleXmll {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int FIELD_DATA_Id {
+            public int PROCESSING_DATA_SECTION_Id {
                 get {
                     try {
-                        return ((int)(this[this.tableTRACED_OPERATION.FIELD_DATA_IdColumn]));
+                        return ((int)(this[this.tableTRACED_OPERATION.PROCESSING_DATA_SECTION_IdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Il valore della colonna \'FIELD_DATA_Id\' nella tabella \'TRACED_OPERATION\' è DBNull" +
-                                ".", e);
+                        throw new global::System.Data.StrongTypingException("Il valore della colonna \'PROCESSING_DATA_SECTION_Id\' nella tabella \'TRACED_OPERAT" +
+                                "ION\' è DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTRACED_OPERATION.FIELD_DATA_IdColumn] = value;
+                    this[this.tableTRACED_OPERATION.PROCESSING_DATA_SECTION_IdColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public FIELD_DATARow FIELD_DATARow {
+            public PROCESSING_DATA_SECTIONRow PROCESSING_DATA_SECTIONRow {
                 get {
-                    return ((FIELD_DATARow)(this.GetParentRow(this.Table.ParentRelations["FIELD_DATA_TRACED_OPERATION"])));
+                    return ((PROCESSING_DATA_SECTIONRow)(this.GetParentRow(this.Table.ParentRelations["PROCESSING_DATA_SECTION_TRACED_OPERATION"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FIELD_DATA_TRACED_OPERATION"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["PROCESSING_DATA_SECTION_TRACED_OPERATION"]);
                 }
             }
             
@@ -2845,14 +3241,14 @@ namespace ConsoleXmll {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsFIELD_DATA_IdNull() {
-                return this.IsNull(this.tableTRACED_OPERATION.FIELD_DATA_IdColumn);
+            public bool IsPROCESSING_DATA_SECTION_IdNull() {
+                return this.IsNull(this.tableTRACED_OPERATION.PROCESSING_DATA_SECTION_IdColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetFIELD_DATA_IdNull() {
-                this[this.tableTRACED_OPERATION.FIELD_DATA_IdColumn] = global::System.Convert.DBNull;
+            public void SetPROCESSING_DATA_SECTION_IdNull() {
+                this[this.tableTRACED_OPERATION.PROCESSING_DATA_SECTION_IdColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3544,6 +3940,40 @@ namespace ConsoleXmll {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public FIELD_DATARow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class PROCESSING_DATA_SECTIONRowChangeEvent : global::System.EventArgs {
+            
+            private PROCESSING_DATA_SECTIONRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public PROCESSING_DATA_SECTIONRowChangeEvent(PROCESSING_DATA_SECTIONRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public PROCESSING_DATA_SECTIONRow Row {
                 get {
                     return this.eventRow;
                 }

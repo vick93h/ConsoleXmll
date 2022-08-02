@@ -46,7 +46,7 @@ public partial class Root {
 [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
 public partial class RootFIELD_DATA {
     
-    private RootFIELD_DATATRACED_OPERATION[] tRACED_OPERATIONField;
+    private RootFIELD_DATAPROCESSING_DATA_SECTIONTRACED_OPERATION[] pROCESSING_DATA_SECTIONField;
     
     private string mSG_IDField;
     
@@ -69,13 +69,14 @@ public partial class RootFIELD_DATA {
     private string sUBGROUP_DESCRIPTIONField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute("TRACED_OPERATION", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public RootFIELD_DATATRACED_OPERATION[] TRACED_OPERATION {
+    [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+    [System.Xml.Serialization.XmlArrayItemAttribute("TRACED_OPERATION", typeof(RootFIELD_DATAPROCESSING_DATA_SECTIONTRACED_OPERATION), Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
+    public RootFIELD_DATAPROCESSING_DATA_SECTIONTRACED_OPERATION[] PROCESSING_DATA_SECTION {
         get {
-            return this.tRACED_OPERATIONField;
+            return this.pROCESSING_DATA_SECTIONField;
         }
         set {
-            this.tRACED_OPERATIONField = value;
+            this.pROCESSING_DATA_SECTIONField = value;
         }
     }
     
@@ -196,9 +197,9 @@ public partial class RootFIELD_DATA {
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
-public partial class RootFIELD_DATATRACED_OPERATION {
+public partial class RootFIELD_DATAPROCESSING_DATA_SECTIONTRACED_OPERATION {
     
-    private RootFIELD_DATATRACED_OPERATIONSINGLE_ITEM[] sINGLE_ITEMField;
+    private RootFIELD_DATAPROCESSING_DATA_SECTIONTRACED_OPERATIONSINGLE_ITEM[] sINGLE_ITEMField;
     
     private string oPCODEField;
     
@@ -216,7 +217,7 @@ public partial class RootFIELD_DATATRACED_OPERATION {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute("SINGLE_ITEM", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public RootFIELD_DATATRACED_OPERATIONSINGLE_ITEM[] SINGLE_ITEM {
+    public RootFIELD_DATAPROCESSING_DATA_SECTIONTRACED_OPERATIONSINGLE_ITEM[] SINGLE_ITEM {
         get {
             return this.sINGLE_ITEMField;
         }
@@ -309,9 +310,9 @@ public partial class RootFIELD_DATATRACED_OPERATION {
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
-public partial class RootFIELD_DATATRACED_OPERATIONSINGLE_ITEM {
+public partial class RootFIELD_DATAPROCESSING_DATA_SECTIONTRACED_OPERATIONSINGLE_ITEM {
     
-    private RootFIELD_DATATRACED_OPERATIONSINGLE_ITEMSINGLE_OP_RESULT[] sINGLE_OP_RESULTField;
+    private RootFIELD_DATAPROCESSING_DATA_SECTIONTRACED_OPERATIONSINGLE_ITEMSINGLE_OP_RESULT[] sINGLE_OP_RESULTField;
     
     private string iTEM_IDField;
     
@@ -325,7 +326,7 @@ public partial class RootFIELD_DATATRACED_OPERATIONSINGLE_ITEM {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute("SINGLE_OP_RESULT", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public RootFIELD_DATATRACED_OPERATIONSINGLE_ITEMSINGLE_OP_RESULT[] SINGLE_OP_RESULT {
+    public RootFIELD_DATAPROCESSING_DATA_SECTIONTRACED_OPERATIONSINGLE_ITEMSINGLE_OP_RESULT[] SINGLE_OP_RESULT {
         get {
             return this.sINGLE_OP_RESULTField;
         }
@@ -396,9 +397,9 @@ public partial class RootFIELD_DATATRACED_OPERATIONSINGLE_ITEM {
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
-public partial class RootFIELD_DATATRACED_OPERATIONSINGLE_ITEMSINGLE_OP_RESULT {
+public partial class RootFIELD_DATAPROCESSING_DATA_SECTIONTRACED_OPERATIONSINGLE_ITEMSINGLE_OP_RESULT {
     
-    private RootFIELD_DATATRACED_OPERATIONSINGLE_ITEMSINGLE_OP_RESULTMEASUREMENT[] mEASUREMENTField;
+    private RootFIELD_DATAPROCESSING_DATA_SECTIONTRACED_OPERATIONSINGLE_ITEMSINGLE_OP_RESULTMEASUREMENT[] mEASUREMENTField;
     
     private string tRY_IDField;
     
@@ -410,7 +411,7 @@ public partial class RootFIELD_DATATRACED_OPERATIONSINGLE_ITEMSINGLE_OP_RESULT {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute("MEASUREMENT", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
-    public RootFIELD_DATATRACED_OPERATIONSINGLE_ITEMSINGLE_OP_RESULTMEASUREMENT[] MEASUREMENT {
+    public RootFIELD_DATAPROCESSING_DATA_SECTIONTRACED_OPERATIONSINGLE_ITEMSINGLE_OP_RESULTMEASUREMENT[] MEASUREMENT {
         get {
             return this.mEASUREMENTField;
         }
@@ -470,7 +471,7 @@ public partial class RootFIELD_DATATRACED_OPERATIONSINGLE_ITEMSINGLE_OP_RESULT {
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
-public partial class RootFIELD_DATATRACED_OPERATIONSINGLE_ITEMSINGLE_OP_RESULTMEASUREMENT {
+public partial class RootFIELD_DATAPROCESSING_DATA_SECTIONTRACED_OPERATIONSINGLE_ITEMSINGLE_OP_RESULTMEASUREMENT {
     
     private string mEAS_DESCRField;
     
