@@ -1,0 +1,1369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- edited by FCA ICT TEAM
+
+	VERSIONE 4.4.0.1    - 04 FEB 2020 (su NPL1 era stata creata versione 4.4.0.0 con queste modifiche a OTT 2018, andate perse nelle ultime revisioni)
+						- Aggiunti nuovi campi in tesis_detail: note, condition
+						- Aggiunto valore 0 in elenco 9						
+
+	VERSIONE 4.4.0.2    - 17 SET 2020 
+						- Aggiunta nuova unitC  di misura GRADI in ELENCO_3, per ovviare a problemi di MQ con carattere B0
+						
+	VERSIONE 4.4.0.3    - 19 NOV 2020 
+						- Aggiunta nuova centralina  in ELENCO_7: 027_EHSM 		
+	VERSIONE 4.4.0.4    - 02 FEB 2021 
+						- Aggiunta nuova unitC  di misura Kfg in ELENCO_3 
+
+	VERSIONE 4.4.0.5    - 09 FEB 2021 
+						- Aggiunta nuove centraline in ELENCO_7: 141_CADM e 149_VDCM per Cassino
+
+	VERSIONE 4.4.0.6    - 12 MAR 2021 
+						- Aggiunte nuove centraline in ELENCO_7: Inserite tutte le centraline MANCANTI rispetto alla norma CS.00048 del 26/07/2019
+						- Aggiunte nuove misure in ELENCO_4: LOAD, LOAD_RECALQUE e DISPLACEMENT_RECALQUE x FIASA
+	VERSIONE 4.4.0.7    - 16 AGO 2021 
+						- Aggiunte nuovi esiti  ELENCO_2: Inserite tutti gli esiti specifici di CS400						
+
+	VERSIONE 4.4.0.8    - 21 GIU 2021  
+						- Aggiunta nuova unitC  di misura kgf in ELENCO_3 
+						- Aggiunte nuove centraline PSA in ELENCO_7: Inserite le centraline PSA ricevute nel documento BPILOT del 08/07/2021
+						- Aggiunti i seguenti nuovi attributi in SINGLE_ECU_DATA: 
+						- ECU_SW_Calibr_Number
+						- ECU_DOTE
+						- ECU_Supplier
+						- ECU_Unlock_KEY
+
+  VERSIONE 4.4.0.9    - 01 OTT 2021 
+						- Aggiunta nuova ECU  ELENCO_7
+						- Aggiunte 141_MRR* e 142_MRR* in ELENCO_7 per Mirafiori (M189 ICE\BEV : gestione diagnosi sensori CADM)
+						
+  VERSIONE 4.4.0.10   - 27 OTT 2021 
+						- Aggiunta centralina 190_PAM2 in ELENCO_7
+						
+	VERSIONE 4.4.0.11   - 28 OTT 2021
+						- Aggiunte centraline
+	
+  VERSIONE 4.4.0.12   - 10 DIC 2021
+						- Aggiunte centraline per Modena: 075_DSCM2 e 024_CVPAM
+            
+  VERSIONE 4.4.0.13   - 09 FEB 2022
+						- Aggiunte/corrette centraline per Pomigliano:
+            
+              EEComponents	XSD	      Nota
+              202_ADCES	    Manca	    aggiungere
+              000_ASU	      Manca	    aggiungere
+              098_CPIM	    124_CPIM	aggiunte entrambe
+              120_ECC_Rear	120_ECCR	va bene cosC, (vedi nota)
+              003_HUDM	    113_HUDM	aggiunte entrambe
+              000_IBS	      Manca	    aggiungere
+              119_ICS_R	    119_ICSR	va bene cosC, (vedi nota)
+              210_MES2	    Manca	    aggiungere
+              208_MPAD2	    Manca	    aggiungere
+              209_MPFC2	    Manca	    aggiungere
+              000_RCU	      124_RCU	  aggiunte entrambe
+              003_SBR	      Manca	    aggiungere
+              201_SGCP	    Manca	    aggiungere
+              207_SRRFL	    Manca	    aggiungere
+              206_SRRFR	    Manca	    aggiungere
+              205_SRRP	    Manca	    aggiungere
+              204_SRRP2	    Manca	    aggiungere
+              000_SRU	      124_SRU	  aggiunte entrambe
+              177_TRSKM	    Manca	    aggiungere
+              000_UAM	      Manca	    aggiungere
+              000_WCPM	    Manca	    aggiungere
+              000_WSMD	    124_WSMD	aggiunte entrambe
+              000_WSMP	    124_WSMP	aggiunte entrambe
+              000_WSMRL	    Manca	    aggiungere
+              000_WSMRR	    Manca	    aggiungere
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <!--********************* -->
+  <!--********************* -->
+  <!-- ELEMENTO CONTENITORE -->
+  <!--********************* -->
+  <!--********************* -->
+  <xs:element name="FIELD_DATA">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="PROCESSING_DATA_SECTION" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute name="MSG_ID" type="SPECIAL_MESSAGE_IDENTIFIER"/>
+      <xs:attribute name="MSG_DT" type="DATETIME" use="required"/>
+      <xs:attribute name="CISNUM" type="INTEGER_7" use="optional"/>
+      <xs:attribute name="MODCOD" type="INTEGER_3" use="optional"/>
+      <xs:attribute name="CHANUM" type="STRINGA_ALN_7" use="optional"/>
+      <xs:attribute name="SEQNUM" type="INTEGER_5" use="optional"/>
+      <xs:attribute name="SEQBIW" type="INTEGER_BIW" use="optional"/>
+      <xs:attribute name="LB__ID" type="INTEGER_4" use="optional"/>
+      <xs:attribute name="LINCOD" type="INTEGER_2" use="optional"/>
+      <xs:attribute name="PRGNUM" type="INTEGER" use="optional"/>
+      <xs:attribute name="LINDES" type="STRINGA_GENER" use="optional"/>
+      <xs:attribute name="SUBGROUP_DESCRIPTION" type="STRINGA_GENER" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <!--*************************** -->
+  <!--*************************** -->
+  <!-- SEZIONE PER LA GESTIONE DELLA TRACEABILITY -->
+  <!--*************************** -->
+  <!--*************************** -->
+  <xs:element name="TRACEABILITY_SECTION">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="TRACEABILITY_OPERATION" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TRACEABILITY_OPERATION">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="CURRENT_ELEMENT"/>
+        <xs:element ref="PREVIOUS_ELEMENT" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CURRENT_ELEMENT">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="SPECIAL_PN_SERIAL_CODE">
+          <xs:attribute name="PNCODE" type="SPECIAL_PNCODE" use="required"/>
+          <xs:attribute name="M_OR_B" type="ELENCO_1" use="required"/>
+          <xs:attribute name="OPCODE" type="SPECIAL_OPERATION_CODE" use="required"/>
+          <xs:attribute name="OPERATOR" type="STRINGA_GENER" use="optional"/>
+          <!--Nuovo campo OPtoolID -->
+          <xs:attribute name="OPTOOL_ID" type="STRINGA_GENER" use="optional"/>
+          <!--Nuovo campo OPtoolID -->
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PREVIOUS_ELEMENT">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="SPECIAL_PN_SERIAL_CODE">
+          <xs:attribute name="PNCODE" type="SPECIAL_PNCODE" use="required"/>
+          <xs:attribute name="M_OR_B" type="ELENCO_1" use="required"/>
+          <xs:attribute name="OPCODE" type="SPECIAL_OPERATION_CODE" use="required"/>
+          <xs:attribute name="OPERATOR" type="STRINGA_GENER" use="optional"/>
+          <!--Nuovo campo OPtoolID -->
+          <xs:attribute name="OPTOOL_ID" type="STRINGA_GENER" use="optional"/>
+          <!--Nuovo campo OPtoolID -->
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <!--************************************************ -->
+  <!--************************************************ -->
+  <!-- SEZIONE PER LA GESTIONE DEI LOTTI DI LASTRATURA -->
+  <!--************************************************ -->
+  <!--************************************************ -->
+  <xs:element name="SUBCOMPONENT_MANAGEMENT_SECTION">
+    <xs:complexType>
+      <xs:attribute name="SUBCOMPONENT_ID" type="STRINGA_GENER" use="optional"/>
+      <xs:attribute name="SUBCOMPONENT_DESCRIPTION" type="STRINGA_GENER" use="optional"/>
+      <!-- 	
+			Il sottocomponente permette senza alcun tipo di validazione di associare dati ricevuti in precedenza ad un certo CIS 
+			Se per il lotto che si riceve esiste giC  una associazione ad un CIS, i dati vengono legati automaticamente.
+			Diversamente gli xml ricevuti vengono "parcheggiati" in attesa che il lotto venga associato al CIS tramite operazioni successive.
+			In nessun caso la gestione del lotto corrisponde ad una operazione di traceability o di part verification.
+			L'oggetto "subcomponent" viene direttamente legato al CIS.
+			-->
+    </xs:complexType>
+  </xs:element>
+  <!--****************************************************************** -->
+  <!--****************************************************************** -->
+  <!-- SEZIONE PER LA GESTIONE DATI DI PROCESSO: LAVORAZIONI E CONTROLLI -->
+  <!--****************************************************************** -->
+  <!--****************************************************************** -->
+  <xs:element name="PROCESSING_DATA_SECTION">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="TRACED_OPERATION" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TRACED_OPERATION">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="SINGLE_ITEM" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="OPCODE" type="SPECIAL_OPERATION_CODE" use="required"/>
+      <xs:attribute name="OPTYPE" type="ELENCO_5" use="required"/>
+      <xs:attribute name="OPCYCLE" type="INTEGER" use="optional"/>
+      <xs:attribute name="OPTOOL_ID" type="STRINGA_GENER" use="optional"/>
+      <xs:attribute name="OP_RESULT" type="ELENCO_2" use="required"/>
+      <xs:attribute name="OPERATOR" type="STRINGA_GENER" use="optional"/>
+      <xs:attribute name="OPDATE" type="DATETIME" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PROCESSING_CHECK_SECTION">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="CHECKED_DATA" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CHECKED_DATA">
+    <xs:complexType>
+      <!--Nuovo sezione ERROR LIST -->
+      <!--<xs:sequence>-->
+      <!--<xs:element ref="ERROR_LIST" minOccurs="0" maxOccurs="unbounded"/>-->
+      <!--</xs:sequence>-->
+      <!--Nuovo sezione ERROR LI\ST -->
+      <xs:simpleContent>
+        <xs:extension base="ELENCO_2">
+          <xs:attribute name="OPCODE" type="SPECIAL_OPERATION_CODE" use="required"/>
+          <xs:attribute name="OPTYPE" type="ELENCO_6" use="required"/>
+          <xs:attribute name="OPTOOL_ID" type="STRINGA_GENER" use="optional"/>
+          <xs:attribute name="OPERATOR" type="STRINGA_GENER" use="optional"/>
+          <!--Nuovo campo TRY_ID -->
+          <xs:attribute name="TRY_ID" type="INTEGER" use="optional"/>
+          <!--Nuovo campo TRY_ID -->
+          <!--Nuova gestione dei componenti ERROR LIST -->
+          <xs:attribute name="STATISTIC_CODE" type="STRINGA_GENER" use="optional"/>
+          <xs:attribute name="STATISTIC_DESCRIPTION" type="STRINGA_GENER" use="optional"/>
+          <xs:attribute name="STATISTIC_VALUE" type="STRINGA_GENER" use="optional"/>
+          <!--Nuova gestione dei componenti ERROR LIST -->
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SINGLE_ITEM">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="SINGLE_OP_RESULT" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="ITEM_ID" type="INTEGER" use="required"/>
+      <xs:attribute name="ITEM_DESC" type="STRINGA_GENER" use="required"/>
+      <xs:attribute name="ITEM_RESULT" type="ELENCO_2" use="required"/>
+      <xs:attribute name="OPERATOR" type="STRINGA_GENER" use="optional"/>
+      <!--Nuovo campo OPtoolID -->
+      <xs:attribute name="OPTOOL_ID" type="STRINGA_GENER" use="optional"/>
+      <!--Nuovo campo OPtoolID -->
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SINGLE_OP_RESULT">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="MEASUREMENT" maxOccurs="unbounded"/>
+        <!--Nuovo campo ErrorList -->
+        <xs:element ref="ERROR_LIST" minOccurs="0" maxOccurs="unbounded"/>
+        <!--Nuovo campo ErrorList -->
+      </xs:sequence>
+      <xs:attribute name="TRY_ID" type="INTEGER" use="required"/>
+      <xs:attribute name="TRY_RESULT" type="ELENCO_2" use="required"/>
+      <!--Nuovo campo OPerator -->
+      <xs:attribute name="OPERATOR" type="STRINGA_GENER" use="optional"/>
+      <!--Nuovo campo OPerator -->
+      <!--Nuovo campo OPtoolID -->
+      <xs:attribute name="OPTOOL_ID" type="STRINGA_GENER" use="optional"/>
+      <!--Nuovo campo OPtoolID -->
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MEASUREMENT">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="ELENCO_2">
+          <xs:attribute name="MEAS_DESCR" type="STRINGA_GENER" use="optional"/>
+          <xs:attribute name="MEASURE" type="ELENCO_4" use="required"/>
+          <xs:attribute name="VALUE" type="STRINGA_GENER" use="required"/>
+          <xs:attribute name="UM" type="ELENCO_3" use="required"/>
+          <xs:attribute name="UPPER_TOLERANCE" type="DECIMAL" use="optional"/>
+          <xs:attribute name="LOWER_TOLERANCE" type="DECIMAL" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <!--*************************** -->
+  <!--*************************** -->
+  <!-- SEZIONE PER LA GESTIONE DELLE CENTRALINE -->
+  <!--*************************** -->
+  <!--*************************** -->
+  <xs:element name="ECU_SECTION">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="SINGLE_ECU_DATA" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SINGLE_ECU_DATA">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ERROR_LIST" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="RLI_FIELDS_LIST" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="OPCODE" type="STRINGA_GENER" use="required"/>
+      <xs:attribute name="ECU_TYPE" type="ELENCO_7" use="required"/>
+      <xs:attribute name="ECU_HW_Number" type="STRINGA_GENER" use="required"/>
+      <xs:attribute name="ECU_HW_VersNumber" type="STRINGA_GENER" use="required"/>
+      <xs:attribute name="ECU_SW_Number" type="STRINGA_GENER" use="required"/>
+      <xs:attribute name="ECU_SW_VersNumber" type="STRINGA_GENER" use="required"/>
+      <xs:attribute name="ECU_Serial_Number" type="STRINGA_GENER" use="required"/>
+      <xs:attribute name="ECU_Part_Number" type="STRINGA_GENER" use="required"/>
+      <xs:attribute name="ECU_Progr_Date" type="STRINGA_GENER" use="required"/>
+      <xs:attribute name="ECU_RESULT" type="ELENCO_2" use="required"/>
+      <xs:attribute name="ECU_TOOL_ID" type="STRINGA_GENER" use="optional"/>
+      <xs:attribute name="OPERATOR" type="STRINGA_GENER" use="optional"/>
+      <!--Nuovo campo TRY_ID. Da verificare l'aggiunta la gestione della ECU_Single_Op_Result -->
+      <xs:attribute name="TRY_ID" type="INTEGER" use="optional"/>
+      <!--Nuovo campo TRY_ID. Da verificare l'aggiunta la gestione della ECU_Single_Op_Result -->
+      <xs:attribute name="ECU_SW_Calibr_Number" type="STRINGA_GENER" use="optional"/>
+      <xs:attribute name="ECU_DOTE" type="STRINGA_GENER" use="optional"/>
+      <xs:attribute name="ECU_Supplier" type="STRINGA_GENER" use="optional"/>
+      <xs:attribute name="ECU_Unlock_KEY" type="STRINGA_GENER" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RLI_FIELDS_LIST">
+    <xs:complexType>
+      <xs:attribute name="RLI_FIELD" type="STRINGA_GENER" use="required"/>
+      <xs:attribute name="RLI_DESCR" type="STRINGA_GENER" use="required"/>
+      <xs:attribute name="RLI_VALUE" type="STRINGA_GENER" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ERROR_LIST">
+    <xs:complexType>
+      <xs:attribute name="STATISTIC_CODE" type="STRINGA_GENER" use="required"/>
+      <xs:attribute name="STATISTIC_DESCRIPTION" type="STRINGA_GENER" use="required"/>
+      <xs:attribute name="STATISTIC_VALUE" type="STRINGA_GENER" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <!--*************************** -->
+  <!--*************************** -->
+  <!-- SEZIONE PER DATI PROGRAMMAZIONE CHIAVI CODE2 -->
+  <!--*************************** -->
+  <!--*************************** -->
+  <xs:element name="KEY_CODE_SECTION">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="SINGLE_KEY_DATA" minOccurs="0" maxOccurs="4"/>
+      </xs:sequence>
+      <xs:attribute name="OPCODE" type="STRINGA_GENER" use="required"/>
+      <xs:attribute name="OP_RESULT" type="ELENCO_2" use="required"/>
+      <xs:attribute name="PROGDATE" type="DATETIME" use="required"/>
+      <xs:attribute name="PDF_DATA" type="STRINGA_GENER" use="optional"/>
+      <xs:attribute name="PASSWORD" type="STRINGA_GENER" use="optional"/>
+      <xs:attribute name="IMMOCODE" type="STRINGA_ALN_10" use="optional"/>
+      <xs:attribute name="KEY_AES_CODE" type="STRINGA_GENER" use="optional"/>
+      <xs:attribute name="OPERATOR" type="STRINGA_GENER" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SINGLE_KEY_DATA">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="ELENCO_2">
+          <xs:attribute name="KEY_ID" type="STRINGA_GENER" use="required"/>
+          <xs:attribute name="FAPP" type="STRINGA_GENER" use="required"/>
+          <xs:attribute name="SEED" type="STRINGA_GENER" use="required"/>
+          <xs:attribute name="IDTX" type="STRINGA_GENER" use="required"/>
+          <xs:attribute name="OPERATOR" type="STRINGA_GENER" use="optional"/>
+          <!--Nuovo campo OPtoolID -->
+          <xs:attribute name="OPTOOL_ID" type="STRINGA_GENER" use="optional"/>
+          <!--Nuovo campo OPtoolID -->
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <!--*************************** -->
+  <!--*************************** -->
+  <!-- SEZIONE PER TRACCIATURA DATI GENERICI -->
+  <!--*************************** -->
+  <!--*************************** -->
+  <xs:element name="GENERIC_DATA_COLLECTION">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="COLLECTED_ELEMENT" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="COLLECTED_ELEMENT">
+    <xs:complexType>
+      <!--Nuovo sezione ERROR LIST -->
+      <!--<xs:sequence>-->
+      <!--<xs:element ref="ERROR_LIST" minOccurs="0" maxOccurs="unbounded"/>-->
+      <!--</xs:sequence>-->
+      <!--Nuovo sezione ERROR LIST -->
+      <xs:simpleContent>
+        <xs:extension base="ELENCO_2">
+          <xs:attribute name="OPCODE" type="STRINGA_GENER" use="required"/>
+          <xs:attribute name="CODING" type="STRINGA_GENER" use="required"/>
+          <xs:attribute name="CODING_DESCRIPTION" type="STRINGA_GENER" use="required"/>
+          <!--Nuovo campo OPerator -->
+          <xs:attribute name="OPERATOR" type="STRINGA_GENER" use="optional"/>
+          <!--Nuovo campo OPerator -->
+          <!--Nuovo campo OPtoolID -->
+          <xs:attribute name="OPTOOL_ID" type="STRINGA_GENER" use="optional"/>
+          <!--Nuovo campo OPtoolID -->
+          <!--Nuovo campo UM -->
+          <xs:attribute name="UM" type="ELENCO_3" use="optional"/>
+          <!--Nuovo campo UM. Il cui valore C( presente nel campo "Coding" -->
+          <!--Nuovo campo Value -->
+          <xs:attribute name="VALUE" type="TRUE-FALSE" use="optional"/>
+          <!--Nuovo campo Value. Serve a identificare se 	nel campo "Coding" il valore ha un UM correlato o No -->
+          <!--Nuovo campo TRY_ID -->
+          <xs:attribute name="TRY_ID" type="INTEGER" use="optional"/>
+          <!--Nuovo campo TRY_ID -->
+          <!--Nuova gestione dei componenti ERROR LIST -->
+          <xs:attribute name="STATISTIC_CODE" type="STRINGA_GENER" use="optional"/>
+          <xs:attribute name="STATISTIC_DESCRIPTION" type="STRINGA_GENER" use="optional"/>
+          <xs:attribute name="STATISTIC_VALUE" type="STRINGA_GENER" use="optional"/>
+          <!--Nuova gestione dei componenti ERROR LIST -->
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <!--*************************** -->
+  <!--*************************** -->
+  <!--La sezione riporta eventuali codici TESIS che sono stati aperti su sistemi di qualitC  di plant e che devono essere comunicati verso MES-->
+  <!--Per ogni codice tesis sono riportati tutti i dati significativi-->
+  <!--SEZIONE ESCLUDIBILE A LIVELLO DI SINGOLO STREAM DI COMUNICAZIONE-->
+  <!--*************************** -->
+  <!--*************************** -->
+  <xs:element name="TESIS_COMMUNICATION">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="TESIS_DETAIL" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TESIS_DETAIL">
+    <!-- Per un tesis che dovesse essere stato aperto con molteplicitC  >1 viene ripetuto l'elemento, per un tesis che dovesse essere aperto e chiuso le operazioni di apertura e chiusura devono essere comunicate dal sistema di qualitC  nel corretto ordine-->
+    <xs:complexType>
+      <xs:attribute name="TESIS_COMPLETE_CODE" type="STRINGA_GENER" use="required"/>
+      <xs:attribute name="TEST_TYPE" type="STRINGA_GENER" use="optional"/>
+      <xs:attribute name="CRITICITY" type="ELENCO_9" use="optional"/>
+      <xs:attribute name="QI4_SOURCE" type="ELENCO_8" use="optional"/>
+      <xs:attribute name="TESIS_UPDATION_STATUS" type="TRUE-FALSE" use="required"/>
+      <xs:attribute name="TESIS_OPEN_DATE" type="DATETIME" use="optional"/>
+      <xs:attribute name="TESIS_OPEN_OPERATOR" type="STRINGA_GENER" use="optional"/>
+      <xs:attribute name="TESIS_CLOSE_DATE" type="DATETIME" use="optional"/>
+      <xs:attribute name="TESIS_CLOSE_OPERATOR" type="STRINGA_GENER" use="optional"/>
+      <!-- OPEN=1 RESOLVED=0-->
+      <!-- Validato solo in caso si stia comunicando l'avvenuta apertura del difetto-->
+      <!-- Validato solo in caso si stia comunicando l'avvenuta apertura del difetto-->
+      <!-- Validato solo in caso si stia comunicando l'avvenuta chiusura del difetto -->
+      <!-- Validato solo in caso si stia comunicando l'avvenuta chiusura del difetto -->
+      <!--Nuovo campo OPtoolID_OPEN -->
+      <xs:attribute name="OPTOOL_ID_OPEN" type="STRINGA_GENER" use="optional"/>
+      <!--Nuovo campo OPtoolID_OPEN -->
+      <!--Nuovo campo OPtoolID_CLOSE -->
+      <xs:attribute name="OPTOOL_ID_CLOSE" type="STRINGA_GENER" use="optional"/>
+      <!--Nuovo campo OPtoolID_CLOSE -->
+      <xs:attribute name="CONDITION" type="STRINGA_GENER" use="optional"/>
+      <xs:attribute name="NOTE" type="STRINGA_GENER" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <!--*************************** -->
+  <!--*************************** -->
+  <!-- SEZIONE PER I DATI DI PIAZZALE -->
+  <!--*************************** -->
+  <!--*************************** -->
+  <xs:element name="COMPOUND_SECTION">
+    <xs:complexType>
+      <xs:attribute name="COMPOUND_CODE" type="STRINGA_NUM_5" use="required"/>
+      <xs:attribute name="TRANSACTION_DATE" type="DATETIME" use="required"/>
+      <xs:attribute name="SYSDATE" type="DATETIME" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <!--*************************** -->
+  <!--*************************** -->
+  <!-- SEZIONE PER LA GESTIONE DELL' ASSORBIMENTO MATERIALI DA PTL -->
+  <!--*************************** -->
+  <!--*************************** -->
+  <xs:element name="PTL_ACCOUNTING">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ACCOUNTED_SEQUENCE" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="VIRTUAL_AREA" type="STRINGA_GENER" use="required"/>
+      <xs:attribute name="RACKID" type="STRINGA_NUM_4" use="optional"/>
+      <xs:attribute name="TRACT_ID" type="INTEGER" use="optional"/>
+      <xs:attribute name="IS_CLOSED" type="TRUE-FALSE" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ACCOUNTED_SEQUENCE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ACCOUNTED_MATERIAL" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="SEQUENCE" type="INTEGER_5" use="required"/>
+      <xs:attribute name="OPERATION_TS" type="DATETIME" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ACCOUNTED_MATERIAL">
+    <xs:complexType>
+      <xs:attribute name="PICKED_MAT" type="SPECIAL_PNCODE" use="required"/>
+      <xs:attribute name="PICKED_QTY" type="INTEGER" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <!--*************************** -->
+  <!--*************************** -->
+  <!-- Definizioni dei Simple Data -->
+  <!--*************************** -->
+  <!--*************************** -->
+  <xs:simpleType name="SPECIAL_OPERATION_CODE">
+    <xs:restriction base="xs:string"/>
+    <!-- es: SCR_A01_010.001 -->
+  </xs:simpleType>
+  <xs:simpleType name="SPECIAL_PN_SERIAL_CODE">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="ELENCO_1">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="M"/>
+      <xs:enumeration value="B"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ELENCO_2">
+    <xs:restriction base="xs:string">
+      <xs:whiteSpace value="collapse"/>
+      <xs:enumeration value="OK"/>
+      <xs:enumeration value="NOK"/>
+      <xs:enumeration value="OK-OPERATOR"/>
+      <xs:enumeration value="NOK-OPERATOR"/>
+      <xs:enumeration value="NOTEXECUTED"/>
+      <xs:enumeration value="OK*"/>
+      <xs:enumeration value="NOK**"/>
+      <xs:enumeration value="SCL-OK"/>
+      <xs:enumeration value="SCL-NOK"/>
+      <xs:enumeration value="INC"/>
+      <xs:enumeration value="NOK*"/>
+      <xs:enumeration value="OK**"/>
+      <xs:enumeration value="OK&lt;&gt;"/>
+      <xs:enumeration value="SCL-NOK*"/>
+      <xs:enumeration value="N.P."/>
+      <xs:enumeration value="N.U."/>
+      <xs:enumeration value="SCL-OK*"/>
+      <xs:enumeration value="OK-SB"/>
+      <xs:enumeration value="NOK-SB"/>
+      <xs:enumeration value="PREV"/>
+      <xs:enumeration value=""/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ELENCO_3">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Nm"/>
+      <xs:enumeration value="N"/>
+      <xs:enumeration value="B0"/>
+      <xs:enumeration value="lt"/>
+      <xs:enumeration value="gr"/>
+      <xs:enumeration value="mBar"/>
+      <xs:enumeration value="s"/>
+      <xs:enumeration value="A"/>
+      <xs:enumeration value="mm"/>
+      <xs:enumeration value="V"/>
+      <xs:enumeration value="B0C"/>
+      <xs:enumeration value="%"/>
+      <xs:enumeration value="Hz"/>
+      <xs:enumeration value="microOHM"/>
+      <xs:enumeration value="megaOHM"/>
+      <xs:enumeration value="J"/>
+      <xs:enumeration value="mm/min"/>
+      <xs:enumeration value="PPM"/>
+      <xs:enumeration value="n.a."/>
+      <!--+++++++++++++++++++++++-->
+      <!--Unita' misura NUOVE-->
+      <xs:enumeration value="cd"/><!--CANDELA-->
+      <xs:enumeration value="b"/><!--PRIME-->
+      <xs:enumeration value="gr*mm"/>
+      <xs:enumeration value="mm/s"/>
+      <xs:enumeration value="(gr*mm)/(mm/s)"/>
+      <xs:enumeration value="RPM"/>
+      <xs:enumeration value="Kg"/><!--MASS-->
+      <xs:enumeration value="cm/10m"/>
+      <xs:enumeration value="m/Km"/>
+      <xs:enumeration value="Km"/><!--LENGTH-->
+      <xs:enumeration value="m"/><!--LENGTH-->
+      <xs:enumeration value="cm"/><!--LENGTH-->
+      <xs:enumeration value="Km/h"/><!--SPEED-->
+      <xs:enumeration value="m/s"/><!--SPEED-->
+      <xs:enumeration value="ml"/><!--MILLILITRE-->
+      <xs:enumeration value="rad"/><!--RADIANT-->
+      <xs:enumeration value="K"/><!--KELVIN-->
+      <xs:enumeration value="mol"/><!--MOLE-->
+      <xs:enumeration value="min"/><!--TIME-->
+      <xs:enumeration value="watt"/><!--POWER-->
+      <xs:enumeration value="J/s"/><!--POWER-->
+      <xs:enumeration value="Pa"/><!--PASCAL-->
+      <xs:enumeration value="Bar"/>
+      <xs:enumeration value="Bar/lt"/>
+      <xs:enumeration value="Ah"/><!--AMPERE/ORA-->
+      <xs:enumeration value="OHM"/>
+      <xs:enumeration value="GRADI"/>
+      <xs:enumeration value="CB0"/>
+      <xs:enumeration value="Kfg"/>
+      <xs:enumeration value="kgf"/>
+      <!--+++++++++++++++++++++++-->
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ELENCO_4">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TORQUE"/>
+      <xs:enumeration value="TORQUE_R"/>
+      <xs:enumeration value="ANGLE"/>
+      <xs:enumeration value="ANGLE_R"/>
+      <xs:enumeration value="STRENGTH"/>
+      <xs:enumeration value="PRESSURE"/>
+      <xs:enumeration value="GRAMS"/>
+      <xs:enumeration value="LITERS"/>
+      <xs:enumeration value="SECONDS"/>
+      <xs:enumeration value="AMPERE"/>
+      <xs:enumeration value="DISPLACEMENT"/>
+      <xs:enumeration value="VOLT"/>
+      <xs:enumeration value="TEMPERATURE"/>
+      <xs:enumeration value="PERCENTAGE"/>
+      <xs:enumeration value="HERTZ"/>
+      <xs:enumeration value="RESISTANCE"/>
+      <xs:enumeration value="ENERGY"/>
+      <xs:enumeration value="SPEED"/>
+      <xs:enumeration value="PARTS-PER-MILLION"/>
+      <xs:enumeration value="ABSOLUTE_VALUE"/>
+      <!--+++++++++++++++++++++++-->
+      <!--Unita' misura NUOVE-->
+      <xs:enumeration value="LUMINOUS_INTENSITY"/>
+      <xs:enumeration value="PRIME"/>
+      <xs:enumeration value="IMBALANCE_VALUE"/>
+      <xs:enumeration value="SPEED_OF_VIBRATION"/>
+      <xs:enumeration value="CALIBRATION_FACTOR"/>
+      <xs:enumeration value="REVOLUTIONS_PER_MINUTE"/>
+      <xs:enumeration value="MASS"/>
+      <xs:enumeration value="LIGHT_HEIGHT"/>
+      <xs:enumeration value="SIDESLIP_ANGLE"/>
+      <xs:enumeration value="LENGTH"/>
+      <xs:enumeration value="VOLUME"/>
+      <xs:enumeration value="THERMODYN_TEMPERATURE"/>
+      <xs:enumeration value="AMOUNT_OF_SUBSTANCE"/>
+      <xs:enumeration value="TIME"/>
+      <xs:enumeration value="POWER"/>
+      <xs:enumeration value="PRESSURE/LITERS"/>
+      <xs:enumeration value="AMPERE_HOUR"/>
+      <xs:enumeration value="OHM"/>
+      <!--+++++++++++++++++++++++-->
+      <!--NUOVE Unita' di misura x FIASA 12/03/2021-->
+      <xs:enumeration value="LOAD"/>
+      <xs:enumeration value="LOAD_RECALQUE"/>
+      <xs:enumeration value="DISPLACEMENT_RECALQUE"/>
+      <!--+++++++++++++++++++++++-->
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ELENCO_5">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SCR"/>
+      <xs:enumeration value="FIL"/>
+      <xs:enumeration value="PUL"/>
+      <xs:enumeration value="SET"/>
+      <xs:enumeration value="CEL"/>
+      <xs:enumeration value="PRE"/>
+      <xs:enumeration value="LKM"/>
+      <xs:enumeration value="WLD"/>
+      <xs:enumeration value="TCK"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ELENCO_6">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="GEN"/>
+      <!--+++++++++++++++++++++++-->
+      <!--OPT TYPE NUOVE-->
+      <xs:enumeration value="PCE"/>
+      <xs:enumeration value="QCE"/>
+      <xs:enumeration value="DCH"/>
+      <!--+++++++++++++++++++++++-->
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ELENCO_7">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="000_BCM"/>
+      <xs:enumeration value="001_ECM"/>
+      <xs:enumeration value="001_PCM"/>
+      <xs:enumeration value="002_CSG"/>
+      <xs:enumeration value="002_EPS"/>
+      <xs:enumeration value="003_IPC"/>
+      <xs:enumeration value="004_SSM"/>
+      <xs:enumeration value="005_RRM"/>
+      <xs:enumeration value="006_BSM"/>
+      <xs:enumeration value="007_ITM"/>
+      <xs:enumeration value="008_DDM"/>
+      <xs:enumeration value="008_DMM"/>
+      <xs:enumeration value="008_FDM"/>
+      <xs:enumeration value="008_UDM"/>
+      <xs:enumeration value="009_TAM"/>
+      <xs:enumeration value="010_ACM"/>
+      <xs:enumeration value="010_ECC"/>
+      <xs:enumeration value="010_MCM"/>
+      <xs:enumeration value="010_MHM"/>
+      <xs:enumeration value="011_DCTM"/>
+      <xs:enumeration value="011_ETCM"/>
+      <xs:enumeration value="011_MTA"/>
+      <xs:enumeration value="011_TCM"/>
+      <xs:enumeration value="012_SAS"/>
+      <xs:enumeration value="013_EPB"/>
+      <xs:enumeration value="014_RAM"/>
+      <xs:enumeration value="015_YRS"/>
+      <xs:enumeration value="016_ACC"/>
+      <xs:enumeration value="017_PDM"/>
+      <xs:enumeration value="018_DSM"/>
+      <xs:enumeration value="018_MSM"/>
+      <xs:enumeration value="019_BAM"/>
+      <xs:enumeration value="020_PEM"/>
+      <xs:enumeration value="020_TRM"/>
+      <xs:enumeration value="021_ESL"/>
+      <xs:enumeration value="022_AGSM"/>
+      <xs:enumeration value="022_DCSM"/>
+      <xs:enumeration value="022_ESM"/>
+      <xs:enumeration value="022_GSM"/>
+      <xs:enumeration value="022_STM"/>
+      <xs:enumeration value="023_PSM"/>
+      <xs:enumeration value="024_PAM"/>
+      <xs:enumeration value="024_SPM"/>
+      <xs:enumeration value="025_ESCM"/>
+      <xs:enumeration value="025_FMM"/>
+      <xs:enumeration value="026_ORC"/>
+      <xs:enumeration value="026_SDM"/>
+      <xs:enumeration value="027_ASM"/>
+      <xs:enumeration value="028_CCM"/>
+      <xs:enumeration value="029_AFLM"/>
+      <xs:enumeration value="029_AFLS"/>
+      <xs:enumeration value="030_HALF"/>
+      <xs:enumeration value="032_TPM"/>
+      <xs:enumeration value="032_TPMS"/>
+      <xs:enumeration value="033_CTM"/>
+      <xs:enumeration value="034_AHM"/>
+      <xs:enumeration value="034_HCM"/>
+      <xs:enumeration value="034_HVAC"/>
+      <xs:enumeration value="035_TBM"/>
+      <xs:enumeration value="035_TGW"/>
+      <xs:enumeration value="036_ETM"/>
+      <xs:enumeration value="036_HTM"/>
+      <xs:enumeration value="036_LTM"/>
+      <xs:enumeration value="037_ADCM"/>
+      <xs:enumeration value="037_DCM"/>
+      <xs:enumeration value="038_RMN"/>
+      <xs:enumeration value="039_SDU"/>
+      <xs:enumeration value="040_RLCM"/>
+      <xs:enumeration value="041_RRCM"/>
+      <xs:enumeration value="041_SCRM"/>
+      <xs:enumeration value="042_RCM"/>
+      <xs:enumeration value="043_VPAM"/>
+      <xs:enumeration value="044_OMM"/>
+      <xs:enumeration value="045_SRM"/>
+      <xs:enumeration value="046_AMP"/>
+      <xs:enumeration value="047_CDM"/>
+      <xs:enumeration value="048_CSWM"/>
+      <xs:enumeration value="048_HMSM"/>
+      <xs:enumeration value="049_VTM"/>
+      <xs:enumeration value="050_ICS"/>
+      <xs:enumeration value="050_HCPM"/>
+      <xs:enumeration value="051_LBSS"/>
+      <xs:enumeration value="052_RBSS"/>
+      <xs:enumeration value="053_SCCM"/>
+      <xs:enumeration value="055_CMM"/>
+      <xs:enumeration value="056_WIN"/>
+      <xs:enumeration value="057_DASM"/>
+      <xs:enumeration value="061_CRSM"/>
+      <xs:enumeration value="063_TTM"/>
+      <xs:enumeration value="064_EVCU"/>
+      <xs:enumeration value="065_RFH"/>
+      <xs:enumeration value="065_RFHM"/>
+      <xs:enumeration value="066_PIM"/>
+      <xs:enumeration value="067_DTCM"/>
+      <xs:enumeration value="068_FVCM"/>
+      <xs:enumeration value="069_PLGM"/>
+      <xs:enumeration value="070_BPCM"/>
+      <xs:enumeration value="071_EAC"/>
+      <xs:enumeration value="072_QVPM"/>
+      <xs:enumeration value="073_OBCM"/>
+      <xs:enumeration value="074_RBC"/>
+      <xs:enumeration value="075_DSCM"/>
+      <xs:enumeration value="076_AHLM"/>
+      <xs:enumeration value="077_DRM"/>
+      <xs:enumeration value="078_OCM"/>
+      <xs:enumeration value="080_TUM"/>
+      <xs:enumeration value="081_CVPM"/>
+      <xs:enumeration value="082_ANC"/>
+      <xs:enumeration value="083_AWD"/>
+      <xs:enumeration value="084_DMRL"/>
+      <xs:enumeration value="085_DMRR"/>
+      <xs:enumeration value="086_HFM"/>
+      <xs:enumeration value="087_HSM"/>
+      <xs:enumeration value="088_HSMR"/>
+      <xs:enumeration value="088_MCPA"/>
+	  <xs:enumeration value="089_MCPB"/>
+      <xs:enumeration value="089_HVACR"/>
+      <xs:enumeration value="090_PTS"/>
+      <xs:enumeration value="099_APM"/>
+      <xs:enumeration value="102_CDCM"/>
+      <xs:enumeration value="103_EMCM"/>
+      <xs:enumeration value="104_TVM"/>
+      <xs:enumeration value="105_ELSDM"/>
+      <xs:enumeration value="108_AAMR"/>
+      <xs:enumeration value="109_AAML"/>
+      <xs:enumeration value="110_ESEM"/>
+      <xs:enumeration value="112_SGW"/>
+      <xs:enumeration value="113_HUDM"/>
+      <xs:enumeration value="117_TTEBM"/>
+      <xs:enumeration value="230_ASCM"/>
+      <xs:enumeration value="086_AHCP"/>
+      <xs:enumeration value="098_HCP"/>
+      <xs:enumeration value="125_IDCM"/>
+      <xs:enumeration value="131_DCSD"/>
+      <xs:enumeration value="139_LSMD"/>
+      <xs:enumeration value="140_LSMP"/>
+      <xs:enumeration value="027_EHSM"/>
+      <xs:enumeration value="141_CADM"/>
+      <xs:enumeration value="149_VDCM"/>
+      <!--Inserite tutte le centraline MANCANTI rispetto alla norma CS.00048 del 26/07/2019 -->
+      <xs:enumeration value="002_EHPS"/>
+      <xs:enumeration value="005_CRM"/>
+      <xs:enumeration value="008_WCM"/>
+      <xs:enumeration value="027_ASCM"/>
+      <xs:enumeration value="029_SLML"/>
+      <xs:enumeration value="035_FTM"/>
+      <xs:enumeration value="040_RRCM"/>
+      <xs:enumeration value="042_FRCM"/>
+      <xs:enumeration value="054_ASBS"/>
+      <xs:enumeration value="058_GPF"/>
+      <xs:enumeration value="059_GPF2"/>
+      <xs:enumeration value="060_GGM"/>
+      <xs:enumeration value="062_DTM"/>
+      <xs:enumeration value="080_VSIM"/>
+      <xs:enumeration value="081_CVPAM"/>
+      <xs:enumeration value="082_EPPM"/>
+      <xs:enumeration value="083_RPSDM"/>
+      <xs:enumeration value="084_LPSDM"/>
+      <xs:enumeration value="085_VES2"/>
+      <xs:enumeration value="087_BSG"/>
+      <xs:enumeration value="089_MCPB"/>
+      <xs:enumeration value="090_SCA1"/>
+      <xs:enumeration value="091_SCA2"/>
+      <xs:enumeration value="092_EBCM"/>
+      <xs:enumeration value="093_PTU"/>
+      <xs:enumeration value="094_RDM"/>
+      <xs:enumeration value="095_DBSM"/>
+      <xs:enumeration value="096_DEMMM"/>
+      <xs:enumeration value="097_PEMMM"/>
+      <xs:enumeration value="100_DTV"/>
+      <xs:enumeration value="101_IDBM"/>
+      <xs:enumeration value="106_APTM"/>
+      <xs:enumeration value="107_ECM2"/>
+      <xs:enumeration value="110_EESSM"/>
+      <xs:enumeration value="111_SIAM"/>
+      <xs:enumeration value="113_BMS"/>
+      <xs:enumeration value="114_FPMM"/>
+      <xs:enumeration value="115_TMM"/>
+      <xs:enumeration value="116_MIDM"/>
+      <xs:enumeration value="118_ANC"/>
+      <xs:enumeration value="119_ICSR"/>
+      <xs:enumeration value="119_CCDMR"/>
+      <xs:enumeration value="120_ECCR"/>
+      <xs:enumeration value="121_MSBD"/>
+      <xs:enumeration value="122_MSBP"/>
+      <xs:enumeration value="123_ELSDMF"/>
+      <xs:enumeration value="124_CPCM"/>
+      <xs:enumeration value="124_RCU"/>
+      <xs:enumeration value="124_SRU"/>
+      <xs:enumeration value="124_WSMD"/>
+      <xs:enumeration value="124_WSMP"/>
+      <xs:enumeration value="124_RVCM"/>
+      <xs:enumeration value="124_CPIM"/>
+      <xs:enumeration value="126_SLMR"/>
+      <xs:enumeration value="127_VRM"/>
+      <xs:enumeration value="128_NVPM"/>
+      <xs:enumeration value="129_SMMD"/>
+      <xs:enumeration value="130_SMMP"/>
+      <xs:enumeration value="132_ALM"/>
+      <xs:enumeration value="133_MIM"/>
+      <xs:enumeration value="134_FRFR"/>
+      <xs:enumeration value="135_FRFL"/>
+      <xs:enumeration value="136_ITBM"/>
+      <xs:enumeration value="136_ITCM"/>
+      <xs:enumeration value="137_ATMM"/>
+      <xs:enumeration value="138_FPDM"/>
+      <xs:enumeration value="142_CADM2"/>
+      <xs:enumeration value="143_CCDMF"/>
+      <xs:enumeration value="144_GNMM"/>
+      <xs:enumeration value="145_MAPDA"/>
+      <xs:enumeration value="146_FSM"/>
+      <xs:enumeration value="147_PSSM"/>
+      <xs:enumeration value="148_BSM2"/>
+      <xs:enumeration value="150_MCPC"/>
+      <xs:enumeration value="151_APM2"/>
+      <xs:enumeration value="152_DALM"/>
+      <xs:enumeration value="153_DMSM"/>
+      <xs:enumeration value="153_ICM1"/>
+      <xs:enumeration value="154_TPBM"/>
+      <xs:enumeration value="155_LSMRL"/>
+      <xs:enumeration value="156_LSMRR"/>
+      <xs:enumeration value="157_PTCM"/>
+      <!-- M189 ICE\BEV : gestione diagnosi sensori CADM -->
+	  <xs:enumeration value="141_MRRFR"/>
+	  <xs:enumeration value="141_MRRFL"/>
+	  <xs:enumeration value="141_MRRRR"/>
+	  <xs:enumeration value="141_MRRRL"/>
+	  <xs:enumeration value="142_MRRFR"/>
+	  <xs:enumeration value="142_MRRFL"/>
+	  <xs:enumeration value="142_MRRRR"/>
+	  <xs:enumeration value="142_MRRRL"/>
+	  <!--+++++++++++++++++++++++++++++++++-->
+      <!--Inserite le centraline PSA ricevute nel documento BPILOT del 08/07/2021 -->
+      <xs:enumeration value="501_AAS"/>
+      <xs:enumeration value="502_ACC"/>
+      <xs:enumeration value="503_ACPMR"/>
+      <xs:enumeration value="504_ALARM"/>
+      <xs:enumeration value="505_ALTP"/>
+      <xs:enumeration value="506_ALTR"/>
+      <xs:enumeration value="507_AMPLI"/>
+      <xs:enumeration value="508_ARTIV"/>
+      <xs:enumeration value="509_AVE"/>
+      <xs:enumeration value="510_AVP"/>
+      <xs:enumeration value="511_BAT CSP"/>
+      <xs:enumeration value="512_BCM"/>
+      <xs:enumeration value="513_BCP"/>
+      <xs:enumeration value="514_BDCP"/>
+      <xs:enumeration value="515_BCPM"/>
+      <xs:enumeration value="516_BDM Cond-Pass"/>
+      <xs:enumeration value="517_BEBA"/>
+      <xs:enumeration value="518_BECB"/>
+      <xs:enumeration value="519_BEM"/>
+      <xs:enumeration value="520_BMF"/>
+      <xs:enumeration value="521_BML"/>
+      <xs:enumeration value="522_BPGA(p)"/>
+      <xs:enumeration value="523_BPV"/>
+      <xs:enumeration value="524_BRHF"/>
+      <xs:enumeration value="525_BSG_RQ"/>
+      <xs:enumeration value="526_BSG_TC"/>
+      <xs:enumeration value="527_BSI"/>
+      <xs:enumeration value="528_BSM"/>
+      <xs:enumeration value="529_BTA"/>
+      <xs:enumeration value="530_BTE"/>
+      <xs:enumeration value="531_BV"/>
+      <xs:enumeration value="532_CAN HS / LS FT"/>
+      <xs:enumeration value="533_CAR"/>
+      <xs:enumeration value="534_CATVM(BCM)"/>
+      <xs:enumeration value="535_CAV"/>
+      <xs:enumeration value="536_SOOT_SENSOR"/>
+      <xs:enumeration value="537_CDE"/>
+      <xs:enumeration value="538_CDPL"/>
+      <xs:enumeration value="539_CIROCCO"/>
+      <xs:enumeration value="540_CLIM"/>
+      <xs:enumeration value="541_CMB"/>
+      <xs:enumeration value="542_CMM"/>
+      <xs:enumeration value="543_COMELEC"/>
+      <xs:enumeration value="544_CONF"/>
+      <xs:enumeration value="545_CVM"/>
+      <xs:enumeration value="546_DAE"/>
+      <xs:enumeration value="547_DEF"/>
+      <xs:enumeration value="548_Design. TLM"/>
+      <xs:enumeration value="549_DG4"/>
+      <xs:enumeration value="550_EMFTEL"/>
+      <xs:enumeration value="551_DIREC"/>
+      <xs:enumeration value="552_DMT CentralisC)"/>
+      <xs:enumeration value="553_DOP"/>
+      <xs:enumeration value="554_DSG"/>
+      <xs:enumeration value="555_ECR"/>
+      <xs:enumeration value="556_EMF"/>
+      <xs:enumeration value="557_ESV_D (_G)"/>
+      <xs:enumeration value="558_FMUX"/>
+      <xs:enumeration value="559_FSE"/>
+      <xs:enumeration value="560_GEP DA"/>
+      <xs:enumeration value="561_HDC"/>
+      <xs:enumeration value="562_HCU1"/>
+      <xs:enumeration value="563_HCU2"/>
+      <xs:enumeration value="564_HORL"/>
+      <xs:enumeration value="565_ICSV"/>
+      <xs:enumeration value="566_INFODIV"/>
+      <xs:enumeration value="567_LAS"/>
+      <xs:enumeration value="568_LCE"/>
+      <xs:enumeration value="569_LIN"/>
+      <xs:enumeration value="570_LVI"/>
+      <xs:enumeration value="571_MAE"/>
+      <xs:enumeration value="572_MATT"/>
+      <xs:enumeration value="573_MCM"/>
+      <xs:enumeration value="574_MDPLC"/>
+      <xs:enumeration value="575_MDS"/>
+      <xs:enumeration value="576_MEAP"/>
+      <xs:enumeration value="577_MPD"/>
+      <xs:enumeration value="578_MUS"/>
+      <xs:enumeration value="579_NG4"/>
+      <xs:enumeration value="580_CNOX"/>
+      <xs:enumeration value="581_OPEN +"/>
+      <xs:enumeration value="582_PADDGO"/>
+      <xs:enumeration value="583_PDPC (P)"/>
+      <xs:enumeration value="584_PROJD"/>
+      <xs:enumeration value="585_PROJG"/>
+      <xs:enumeration value="586_RBG"/>
+      <xs:enumeration value="587_RCD"/>
+      <xs:enumeration value="588_RD5/6"/>
+      <xs:enumeration value="589_RNEG"/>
+      <xs:enumeration value="590_SAM"/>
+      <xs:enumeration value="591_SCR"/>
+      <xs:enumeration value="592_SIR"/>
+      <xs:enumeration value="593_SMEG"/>
+      <xs:enumeration value="594_STL"/>
+      <xs:enumeration value="595_RETROINT"/>
+      <xs:enumeration value="596_SUSP"/>
+      <xs:enumeration value="597_TBMU"/>
+      <xs:enumeration value="598_TCM"/>
+      <xs:enumeration value="599_TNB"/>
+      <xs:enumeration value="600_Frein"/>
+      <xs:enumeration value="601_VCI"/>
+      <xs:enumeration value="602_VISION LAT"/>
+      <xs:enumeration value="603_VISION NUIT"/>
+      <xs:enumeration value="604_VTH"/>
+      <xs:enumeration value="605_BPCA"/>
+      <xs:enumeration value="606_BSG_S"/>
+      <xs:enumeration value="607_CCE"/>
+      <xs:enumeration value="608_CHRG"/>
+      <xs:enumeration value="609_PEU"/>
+      <xs:enumeration value="610_VISION AR"/>
+      <xs:enumeration value="611_RCC"/>
+      <xs:enumeration value="612_BPAV"/>
+      <xs:enumeration value="613_MDPLC_G"/>
+      <xs:enumeration value="614_FRS"/>
+      <xs:enumeration value="615_US_ARD"/>
+      <xs:enumeration value="616_US_ARCD"/>
+      <xs:enumeration value="617_US_SAMD"/>
+      <xs:enumeration value="618_US_ARG"/>
+      <xs:enumeration value="619_US_ARCG"/>
+      <xs:enumeration value="620_US_SAMG"/>
+      <xs:enumeration value="621_US_AVD"/>
+      <xs:enumeration value="622_US_AVCD"/>
+      <xs:enumeration value="623_US_MPDD"/>
+      <xs:enumeration value="624_US_AVG"/>
+      <xs:enumeration value="625_US_AVCG"/>
+      <xs:enumeration value="626_US_MPDG"/>
+      <xs:enumeration value="627_NOMADE CHARGER"/>
+      <xs:enumeration value="628_BAAS_L"/>
+      <xs:enumeration value="629_BAAS_TR"/>
+      <xs:enumeration value="630_FMUX_univers"/>
+      <xs:enumeration value="631_BRNC_AVG"/>
+      <xs:enumeration value="632_ESM"/>
+      <xs:enumeration value="633_CCE"/>
+      <xs:enumeration value="634_RNT3"/>
+      <xs:enumeration value="635_OUTIL_DIAG"/>
+      <xs:enumeration value="636_CNOX_A"/>
+      <xs:enumeration value="637_CFID"/>
+      <xs:enumeration value="638_CSS"/>
+      <xs:enumeration value="639_BCLVR"/>
+      <xs:enumeration value="640_IDVR"/>
+      <xs:enumeration value="641_PLMB"/>
+      <xs:enumeration value="642_CAVN"/>
+      <xs:enumeration value="643_ARS"/>
+      <xs:enumeration value="644_FEU_AR_C"/>
+      <xs:enumeration value="645_FEU_AR_P"/>
+      <xs:enumeration value="646_FEU_COMP_AR_C"/>
+      <xs:enumeration value="647_FEU_COMP_AR_P"/>
+      <xs:enumeration value="648_CAN_HPT"/>
+      <xs:enumeration value="649_CAN_TRQ"/>
+      <xs:enumeration value="650_Flex PTR"/>
+      <xs:enumeration value="651_CTPA"/>
+      <xs:enumeration value="652_PTMU"/>
+      <xs:enumeration value="653_BHI"/>
+      <xs:enumeration value="654_VISION AV"/>
+      <xs:enumeration value="655_NAC"/>
+      <xs:enumeration value="656_MDPLC_D"/>
+      <xs:enumeration value="657_MCM_HYB"/>
+      <xs:enumeration value="658_SCB_D"/>
+      <xs:enumeration value="659_SCB_P"/>
+      <xs:enumeration value="660_SCB_RL"/>
+      <xs:enumeration value="661_SCB_RR"/>
+      <xs:enumeration value="662_SPB_D"/>
+      <xs:enumeration value="663_SPB_P"/>
+      <xs:enumeration value="664_SPB_RL"/>
+      <xs:enumeration value="665_SPB_RR"/>
+      <xs:enumeration value="666_RC12"/>
+      <xs:enumeration value="667_CMD BV"/>
+      <xs:enumeration value="668_CAVP_AR"/>
+      <xs:enumeration value="669_CAVP_AV"/>
+      <xs:enumeration value="670_CAVP_LAT_D"/>
+      <xs:enumeration value="671_CAVP_LAT_G"/>
+      <xs:enumeration value="672_MRN"/>
+      <xs:enumeration value="673_FDCB"/>
+      <xs:enumeration value="674_BCC_ADD"/>
+      <xs:enumeration value="675_BRNC_AVD"/>
+      <xs:enumeration value="676_CRT"/>
+      <xs:enumeration value="677_VCP"/>
+      <xs:enumeration value="678_RITCS"/>
+      <xs:enumeration value="679_IVC_D"/>
+      <xs:enumeration value="680_SVSB"/>
+      <xs:enumeration value="681_BEMP"/>
+      <xs:enumeration value="682_BVN"/>
+      <xs:enumeration value="683_RGBS"/>
+      <xs:enumeration value="684_RDM"/>
+      <xs:enumeration value="685_PFHM_RL"/>
+      <xs:enumeration value="686_PFHM_RR"/>
+      <xs:enumeration value="687_PFHM_FL"/>
+      <xs:enumeration value="688_PFHM_FR"/>
+      <xs:enumeration value="689_WLC"/>
+      <xs:enumeration value="690_MCU"/>
+      <xs:enumeration value="691_EOPCU"/>
+      <xs:enumeration value="692_VCU"/>
+      <xs:enumeration value="693_EBB"/>
+      <xs:enumeration value="694_LVNSD"/>
+      <xs:enumeration value="695_RCE"/>
+      <xs:enumeration value="696_CIG"/>
+      <xs:enumeration value="697_SDCM"/>
+      <xs:enumeration value="698_DSB"/>
+      <xs:enumeration value="699_DRIVER_LED_R"/>
+      <xs:enumeration value="700_BMU"/>
+      <xs:enumeration value="701_MCU"/>
+      <xs:enumeration value="702_FMB"/>
+      <xs:enumeration value="703_SWITCH_A"/>
+      <xs:enumeration value="704_SWEB"/>
+      <xs:enumeration value="705_INC"/>
+      <xs:enumeration value="706_EPLU"/>
+      <xs:enumeration value="707_MSB (TBCU)"/>
+      <xs:enumeration value="708_BDSGS"/>
+      <xs:enumeration value="709_RMCU"/>
+      <xs:enumeration value="710_Wireless Charger"/>
+      <xs:enumeration value="711_OBC_DCDC"/>
+      <xs:enumeration value="712_AVAS"/>
+      <xs:enumeration value="713_CTPE"/>
+      <xs:enumeration value="714_BECH"/>
+      <xs:enumeration value="715_OCS"/>
+      <xs:enumeration value="716_NFC_EU"/>
+      <xs:enumeration value="717_DRIVER_LED_L"/>
+      <xs:enumeration value="718_IHU"/>
+      <xs:enumeration value="719_E_VCU"/>
+      <xs:enumeration value="720_BSRF"/>
+      <xs:enumeration value="721_IVI"/>
+      <xs:enumeration value="722_PFHM"/>
+      <xs:enumeration value="723_BPV"/>
+      <xs:enumeration value="724_ITB"/>
+      <xs:enumeration value="725_FMCU"/>
+      <xs:enumeration value="726_LVNSD"/>
+      <xs:enumeration value="727_CHCU"/>
+      <!--+++++++++++++++++++++++++++++++++-->
+      <xs:enumeration value="190_PAM2"/>
+      <!--+++++++++++++++++++++++++++++++++-->
+	  <xs:enumeration value="005_NLTM"/>
+	  <xs:enumeration value="022_PESM"/>
+	  <xs:enumeration value="024_CVPAM"/>
+	  <xs:enumeration value="024_CVADAS"/>
+	  <xs:enumeration value="036_CRM"/>
+	  <xs:enumeration value="045_SCOM"/>
+	  <xs:enumeration value="046_DAMP"/>
+	  <xs:enumeration value="058_VMU"/>
+	  <xs:enumeration value="059_ICCU"/>
+	  <xs:enumeration value="060_BMS"/>
+	  <xs:enumeration value="061_EM"/>
+	  <xs:enumeration value="070_DEMMM"/>
+	  <xs:enumeration value="075_PEMMM"/>
+	  <xs:enumeration value="103_CRCM"/>
+	  <xs:enumeration value="149_PDCM"/>
+	  <xs:enumeration value="158_ISCM"/>
+	  <xs:enumeration value="159_VDCM2"/>
+	  <xs:enumeration value="160_PAM2"/>
+	  <xs:enumeration value="161_ADCAM"/>
+	  <xs:enumeration value="162_HCVS1"/>
+	  <xs:enumeration value="163_HCVS2"/>
+	  <xs:enumeration value="164_HPFC1"/>
+	  <xs:enumeration value="165_HPFC2"/>
+	  <xs:enumeration value="166_HES2"/>
+	  <xs:enumeration value="167_HPAD"/>
+	  <xs:enumeration value="168_LIDAR"/>
+	  <xs:enumeration value="169_LRRRL"/>
+	  <xs:enumeration value="170_LRRRR"/>
+	  <xs:enumeration value="171_MES"/>
+	  <xs:enumeration value="172_MPFC"/>
+	  <xs:enumeration value="173_MPAD"/>
+	  <xs:enumeration value="174_LRRF"/>
+	  <xs:enumeration value="175_MRSRR"/>
+	  <xs:enumeration value="176_MRSRL"/>
+	  <xs:enumeration value="177_TRSCM"/>
+	  <xs:enumeration value="178_SPAAK"/>
+	  <xs:enumeration value="179_TTPM"/>
+	  <xs:enumeration value="180_TIM"/>
+	  <xs:enumeration value="181_RRDHM"/>
+	  <xs:enumeration value="182_RLDHM"/>
+	  <xs:enumeration value="183_FRDHM"/>
+	  <xs:enumeration value="184_FLDHM"/>
+	  <xs:enumeration value="185_WCPM2"/>
+	  <xs:enumeration value="186_UWBS1"/>
+	  <xs:enumeration value="187_UWBS2"/>
+	  <xs:enumeration value="188_UWBS3"/>
+	  <xs:enumeration value="189_UWBS4"/>
+	  <xs:enumeration value="190_UWBS5"/>
+	  <xs:enumeration value="191_UWBS6"/>
+	  <xs:enumeration value="192_UWBS7"/>
+	  <xs:enumeration value="193_UWBS8"/>
+	  <xs:enumeration value="194_DPDM"/>
+	  <xs:enumeration value="195_AGWM"/>
+	  <xs:enumeration value="196_FAD"/>
+	  <xs:enumeration value="197_PTGM"/>
+	  <xs:enumeration value="198_CVUX"/>
+	  <xs:enumeration value="199_STIM"/>
+	  <xs:enumeration value="200_MRRP"/>
+	  <!--+++++++++MODENA++++++++++++++++++-->
+    <xs:enumeration value="075_DSCM2"/>
+    <xs:enumeration value="024_CVPAM"/>
+    <!--++++++++09.02.2022+++++++++++++++-->
+    <xs:enumeration value="202_ADCES"/>
+    <xs:enumeration value="000_ASU"/>
+    <xs:enumeration value="098_CPIM"/>
+    <xs:enumeration value="003_HUDM"/>
+    <xs:enumeration value="000_IBS"/>
+    <xs:enumeration value="210_MES2"/>
+    <xs:enumeration value="208_MPAD2"/>
+    <xs:enumeration value="209_MPFC2"/>
+    <xs:enumeration value="000_RCU"/>
+    <xs:enumeration value="003_SBR"/>
+    <xs:enumeration value="201_SGCP"/>
+    <xs:enumeration value="207_SRRFL"/>
+    <xs:enumeration value="206_SRRFR"/>
+    <xs:enumeration value="205_SRRP"/>
+    <xs:enumeration value="204_SRRP2"/>
+    <xs:enumeration value="000_SRU"/>
+    <xs:enumeration value="177_TRSKM"/>
+    <xs:enumeration value="000_UAM"/>
+    <xs:enumeration value="000_WCPM"/>
+    <xs:enumeration value="000_WSMD"/>
+    <xs:enumeration value="000_WSMP"/>
+    <xs:enumeration value="000_WSMRL"/>
+    <xs:enumeration value="000_WSMRR"/>     
+    <!--+++++++++++++++++++++++++++++++++-->
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ELENCO_8">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UNK"/>
+      <xs:enumeration value="CPA"/>
+      <xs:enumeration value="TDF"/>
+      <xs:enumeration value="VLO"/>
+      <xs:enumeration value="MACRO"/>
+      <!--Gestione Anomalie Tesis da Equipment cioC( attrezzatura di Plant-->
+      <xs:enumeration value="EQP"/>
+      <!--Gestione Anomalie Tesis da Equipment cioC( attrezzatura di Plant-->
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ELENCO_9">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="0"/>
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="10"/>
+      <xs:enumeration value="50"/>
+      <xs:enumeration value="100"/>
+      <xs:enumeration value="nd"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="SPECIAL_PNCODE">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\d{11}[EISR]"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="SPECIAL_MESSAGE_IDENTIFIER">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\d{4}(_LN)\d{2}(_)\d{14}(_)\d{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DATETIME">
+    <xs:restriction base="xs:dateTime"/>
+  </xs:simpleType>
+  <xs:simpleType name="STRINGA_GENER">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="STRINGA_NUM_3">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="STRINGA_NUM_4">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="STRINGA_NUM_5">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{5}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="STRINGA_NUM_6">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{6}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="STRINGA_NUM_7">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{7}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="STRINGA_ALN_10">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9 A-Z]{10}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="STRINGA_ALN_8">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9 A-Z]{8}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="STRINGA_ALN_7">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9 A-Z]{7}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="STRINGA_ALN_6">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9 A-Z]{6}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="STRINGA_ALN_3">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9 A-Z]{3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="INTEGER_BIW">
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="16384"/>
+      <!-- 2 elevato alla 14, standard per la sequenza di lastratura CARS -->
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="INTEGER_7">
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:minInclusive value="0000001"/>
+      <xs:maxInclusive value="9999998"/>
+      <xs:pattern value="\d{7}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="INTEGER_5">
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:minInclusive value="10001"/>
+      <xs:maxInclusive value="99998"/>
+      <xs:pattern value="\d{5}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="INTEGER_4">
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:minInclusive value="0001"/>
+      <xs:maxInclusive value="9998"/>
+      <xs:pattern value="\d{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="INTEGER_3">
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:minInclusive value="001"/>
+      <xs:maxInclusive value="999"/>
+      <xs:pattern value="\d{3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="INTEGER_2">
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:minInclusive value="01"/>
+      <xs:maxInclusive value="99"/>
+      <xs:pattern value="\d{2}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="INTEGER_1">
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="9"/>
+      <xs:pattern value="\d{1}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="INTEGER">
+    <xs:restriction base="xs:nonNegativeInteger"/>
+  </xs:simpleType>
+  <xs:simpleType name="DECIMAL">
+    <xs:restriction base="xs:decimal"/>
+  </xs:simpleType>
+  <xs:simpleType name="TRUE-FALSE">
+    <xs:restriction base="xs:boolean"/>
+  </xs:simpleType>
+</xs:schema>

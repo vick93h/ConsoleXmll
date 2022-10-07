@@ -13,12 +13,12 @@ namespace ConsoleXmll
     {
         static void Main(string[] args)
         {
-            string file = "C:\\Users\\Vittorio\\Desktop\\ConsoleXmll\\ConsoleXmll\\PLCDB.config";
+            string file = "E:\\Pacco Batteria XML\\ConsoleXmll\\ConsoleXmll\\PLCDB.config";
             List<RootFIELD_DATA> list = new List<RootFIELD_DATA>();
             list = (from e in XDocument.Load(file).Descendants("PLC")
                     select new RootFIELD_DATA
                     {
-                        MSG_ID = (string)e.Attribute("MSG_ID"),
+                        MSG_ID =  (string)e.Attribute("MSG_ID"),
                         MSG_DT = (string)e.Attribute("MSG_DT"),
                         CISNUM = (string)e.Attribute("CISNUM"),
                         MODCOD = (string)e.Attribute("MODCOD"),
@@ -61,7 +61,8 @@ namespace ConsoleXmll
                                                                                                         VALUE = (string)h.Attribute("VALUE"),
                                                                                                         UM = (string)h.Attribute("UM"),
                                                                                                         UPPER_TOLERANCE = (string)h.Attribute("UPPER_TOLERANCE"),
-                                                                                                        LOWER_TOLERANCE = (string)h.Attribute("LOWER_TOLERANCE")
+                                                                                                        LOWER_TOLERANCE = (string)h.Attribute("LOWER_TOLERANCE"),
+                                                                                                        Value=(string)h.Value
                                                                                                     }).ToArray()
                                                                                     }).ToArray()
 

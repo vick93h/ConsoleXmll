@@ -67,6 +67,9 @@
     <None Include="prova.xss">
       <DependentUpon>prova.xsd</DependentUpon>
     </None>
+    <None Include="SUP2MES_4.4.0.13.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="prova.xml" />
